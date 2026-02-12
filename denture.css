@@ -1,0 +1,1792 @@
+/* DENTURE PAGE STYLES */
+
+/* Body padding for fixed header */
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 80px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: #f8faf9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Ensure header stays fixed */
+.site-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    background: white !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Active link styling */
+.nav-link.active,
+.dropdown-link.active,
+.mobile-dropdown-link.active {
+    color: #2A5934 !important;
+    font-weight: 700 !important;
+}
+
+.dropdown-link.active {
+    background: rgba(42, 89, 52, 0.05) !important;
+}
+
+/* Common Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.highlight {
+    color: #2A5934;
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #2A5934, #4CAF50);
+    border-radius: 2px;
+}
+
+/* ====== HERO SECTION ====== */
+.denture-hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7f2 100%);
+    padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.denture-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: radial-gradient(circle at 80% 50%, rgba(42, 89, 52, 0.05) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.denture-hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.denture-hero-content {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.treatment-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(42, 89, 52, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #2A5934;
+}
+
+.treatment-badge i {
+    font-size: 1.2rem;
+}
+
+.denture-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #111;
+    margin-bottom: 1rem;
+}
+
+.denture-subtitle {
+    font-size: 1.3rem;
+    color: #2A5934;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.denture-description {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2A5934, #4CAF50);
+    color: white;
+    box-shadow: 0 8px 20px rgba(42, 89, 52, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(42, 89, 52, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: #2A5934;
+    border: 2px solid #2A5934;
+}
+
+.btn-secondary:hover {
+    background: #2A5934;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.denture-hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInRight 0.8s ease-out 0.2s both;
+}
+
+.image-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 40px rgba(42, 89, 52, 0.15);
+}
+
+.floating-badge {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: white;
+    padding: 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    animation: float 3s ease-in-out infinite;
+}
+
+.badge-icon {
+    font-size: 2rem;
+}
+
+.badge-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #2A5934;
+}
+
+.badge-text {
+    font-size: 0.8rem;
+    color: #666;
+    white-space: nowrap;
+}
+
+/* Stats Bar */
+.stats-bar {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+.stat-item:hover {
+    background: rgba(42, 89, 52, 0.05);
+    transform: translateY(-5px);
+}
+
+.stat-item i {
+    font-size: 2rem;
+    color: #2A5934;
+    background: rgba(42, 89, 52, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #111;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+}
+
+/* ====== TYPES SECTION ====== */
+.types-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.type-card {
+    background: #f8faf9;
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.type-card:hover {
+    transform: translateY(-10px);
+    border-color: #2A5934;
+    box-shadow: 0 20px 40px rgba(42, 89, 52, 0.15);
+}
+
+.type-card.featured {
+    border: 2px solid #2A5934;
+    position: relative;
+    background: linear-gradient(135deg, #f8faf9, #f0f7f2);
+}
+
+.type-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: #2A5934;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(42, 89, 52, 0.3);
+}
+
+.type-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(42, 89, 52, 0.1), rgba(42, 89, 52, 0.05));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.type-icon i {
+    font-size: 2.5rem;
+    color: #2A5934;
+}
+
+.type-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.type-card > p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.type-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    flex-grow: 1;
+}
+
+.type-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.type-features i {
+    color: #2A5934;
+    font-size: 0.9rem;
+}
+
+.type-indicator {
+    padding: 1rem;
+    background: rgba(42, 89, 52, 0.05);
+    border-radius: 10px;
+    border-left: 4px solid #2A5934;
+}
+
+.type-indicator span {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.type-indicator strong {
+    color: #2A5934;
+    font-size: 1rem;
+}
+
+/* ====== PROCESS SECTION ====== */
+.process-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f0f7f2 0%, #e8f5e9 100%);
+}
+
+.process-timeline {
+    max-width: 800px;
+    margin: 3rem auto 0;
+    position: relative;
+}
+
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, #2A5934, #4CAF50);
+    z-index: 0;
+}
+
+.process-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+    animation: slideInRight 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.process-step:nth-child(1) { animation-delay: 0.1s; }
+.process-step:nth-child(2) { animation-delay: 0.2s; }
+.process-step:nth-child(3) { animation-delay: 0.3s; }
+.process-step:nth-child(4) { animation-delay: 0.4s; }
+.process-step:nth-child(5) { animation-delay: 0.5s; }
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #2A5934, #4CAF50);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px rgba(42, 89, 52, 0.3);
+}
+
+.step-content {
+    flex: 1;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.step-content h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.step-content p {
+    color: #666;
+    margin: 0;
+}
+
+.step-duration {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(42, 89, 52, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: #2A5934;
+    font-weight: 600;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+/* ====== BENEFITS SECTION ====== */
+.benefits-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.benefit-card {
+    background: #f8faf9;
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 1px solid rgba(42, 89, 52, 0.1);
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(42, 89, 52, 0.15);
+    background: white;
+    border-color: #2A5934;
+}
+
+.benefit-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(42, 89, 52, 0.1), rgba(42, 89, 52, 0.05));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #2A5934, #4CAF50);
+}
+
+.benefit-icon i {
+    font-size: 2.5rem;
+    color: #2A5934;
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon i {
+    color: white;
+}
+
+.benefit-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 1rem;
+}
+
+.benefit-card p {
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ====== CTA SECTION ====== */
+.cta-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #2A5934 0%, #3a7a4a 100%);
+    color: white;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.phone-btn {
+    background: white;
+    color: #2A5934;
+}
+
+.phone-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.appointment-btn {
+    background: transparent;
+    color: white;
+    border-color: white;
+}
+
+.appointment-btn:hover {
+    background: white;
+    color: #2A5934;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+}
+
+.cta-features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.feature i {
+    color: #4CAF50;
+}
+
+/* ====== ANIMATIONS ====== */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+
+/* Tablet View */
+@media (max-width: 992px) {
+    .denture-hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .denture-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+    }
+    
+    .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-timeline::before {
+        left: 20px;
+    }
+    
+    .process-step {
+        gap: 1.5rem;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+    
+    .denture-hero {
+        padding: 3rem 0 2rem;
+    }
+    
+    .denture-title {
+        font-size: 2rem;
+    }
+    
+    .denture-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .stats-bar {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .process-timeline::before {
+        display: none;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .step-content {
+        width: 100%;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .cta-features {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .types-grid,
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .denture-hero-container {
+        padding: 0 15px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .image-container {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .floating-badge {
+        top: -10px;
+        right: -10px;
+        padding: 0.8rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* CRITICAL FIXES FOR DENTURE PAGE - Add this to your existing denture.css */
+
+/* FIX 1: Body overflow and positioning */
+body {
+    overflow-x: hidden !important;
+    min-height: 100vh !important;
+    position: relative !important;
+    display: block !important;
+}
+
+/* FIX 2: Header z-index fix */
+.site-header {
+    z-index: 999 !important;
+}
+
+/* FIX 3: Remove any conflicting position/transform on main elements */
+.denture-hero,
+.types-section,
+.process-section,
+.benefits-section,
+.cta-section {
+    position: static !important;
+    transform: none !important;
+}
+
+/* FIX 4: Floating badge positioning fix */
+.floating-badge {
+    position: fixed !important;
+    top: 120px !important;
+    right: 30px !important;
+    z-index: 100 !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* FIX 5: Container width fix */
+.container {
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    position: relative !important;
+}
+
+/* FIX 6: Remove any transform: translate causing issues */
+.denture-hero-container,
+.types-grid,
+.process-timeline,
+.benefits-grid,
+.cta-content {
+    transform: none !important;
+}
+
+/* FIX 7: Ensure sections are visible */
+section {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* FIX 8: Stats bar positioning */
+.stats-bar {
+    position: relative !important;
+    z-index: 1 !important;
+    margin: 2rem auto !important;
+}
+
+/* FIX 9: Image container size fix */
+.image-container {
+    width: 280px !important;
+    height: 280px !important;
+    max-width: 100% !important;
+}
+
+/* FIX 10: Remove any conflicting animations */
+.denture-hero-content,
+.denture-hero-image {
+    animation: none !important;
+}
+
+/* SIMPLE FLOATING ANIMATION (safe version) */
+@keyframes simpleFloat {
+    0%, 100% { 
+        transform: translateY(0) scale(1); 
+    }
+    50% { 
+        transform: translateY(-10px) scale(1.02); 
+    }
+}
+
+.floating-badge {
+    animation: simpleFloat 3s ease-in-out infinite !important;
+}
+
+/* RESPONSIVE FIXES */
+@media (max-width: 992px) {
+    .floating-badge {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        margin: 1rem auto !important;
+        display: inline-flex !important;
+    }
+    
+    .image-container {
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px !important;
+    }
+    
+    .floating-badge {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        margin-top: 1rem !important;
+        animation: none !important;
+    }
+}
+/* SIMPLE FIX FOR VISIBILITY */
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+body > * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    position: relative !important;
+}
+
+/* Fix floating badge specifically */
+.floating-badge {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: fixed;
+    top: 120px;
+    right: 30px;
+    z-index: 100;
+}
+
+/* Fix hero image */
+.image-container {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+/* Add this to your CSS file to hide injected extension text */
+body::after {
+    display: none !important;
+}
+
+/* Or more specifically */
+script[data-addoncrop] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+/* ====== COMPLETE RESPONSIVE DESIGN ====== */
+
+/* Extra Large Screens (1400px and above) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    .denture-hero-container {
+        gap: 4rem;
+    }
+    
+    .stats-bar {
+        margin-top: 4rem;
+    }
+}
+
+/* Large Screens (1200px to 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Medium Screens (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+        padding: 0 15px;
+    }
+    
+    .denture-hero-container {
+        gap: 2.5rem;
+    }
+    
+    .denture-title {
+        font-size: 2.5rem;
+    }
+    
+    .image-container {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .floating-badge {
+        top: -15px;
+        right: -15px;
+    }
+    
+    .types-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tablet Landscape (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    body {
+        padding-top: 75px;
+    }
+    
+    .container {
+        max-width: 720px;
+        padding: 0 15px;
+    }
+    
+    .denture-hero {
+        padding: 3.5rem 0 1.5rem;
+    }
+    
+    .denture-hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .denture-hero-content {
+        order: 1;
+    }
+    
+    .denture-hero-image {
+        order: 2;
+    }
+    
+    .denture-title {
+        font-size: 2.3rem;
+    }
+    
+    .denture-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .denture-description {
+        margin: 0 auto 2rem;
+        max-width: 600px;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+        padding: 1.5rem;
+    }
+    
+    .image-container {
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
+    }
+    
+    .floating-badge {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        margin: 1.5rem auto 0 !important;
+        display: inline-flex !important;
+        animation: float 3s ease-in-out infinite !important;
+    }
+    
+    .process-timeline::before {
+        left: 25px;
+    }
+    
+    .process-step {
+        gap: 1.5rem;
+    }
+    
+    .types-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .cta-buttons {
+        gap: 1rem;
+    }
+    
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Tablet Portrait (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    body {
+        padding-top: 70px;
+    }
+    
+    .container {
+        max-width: 540px;
+        padding: 0 15px;
+    }
+    
+    .denture-hero {
+        padding: 3rem 0 1.5rem;
+    }
+    
+    .denture-title {
+        font-size: 2rem;
+    }
+    
+    .denture-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .denture-description {
+        font-size: 1.05rem;
+        margin-bottom: 1.8rem;
+    }
+    
+    .hero-actions {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    
+    .btn-primary, 
+    .btn-secondary {
+        padding: 0.9rem 1.8rem;
+        font-size: 0.95rem;
+    }
+    
+    .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+        padding: 1.2rem;
+    }
+    
+    .stat-item {
+        padding: 0.8rem;
+    }
+    
+    .stat-item i {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.3rem;
+    }
+    
+    .image-container {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .floating-badge {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        margin: 1.5rem auto 0 !important;
+        padding: 0.9rem;
+    }
+    
+    .process-timeline::before {
+        left: 20px;
+    }
+    
+    .process-step {
+        gap: 1.2rem;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .step-content {
+        padding: 1.2rem;
+    }
+    
+    .types-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+    
+    .type-card,
+    .benefit-card {
+        padding: 1.5rem;
+    }
+    
+    .type-icon,
+    .benefit-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1.2rem;
+    }
+    
+    .type-icon i,
+    .benefit-icon i {
+        font-size: 2rem;
+    }
+    
+    .cta-buttons {
+        gap: 0.8rem;
+    }
+    
+    .cta-btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .section-header {
+        margin-bottom: 2.2rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.9rem;
+    }
+}
+
+/* Mobile (425px to 575px) */
+@media (min-width: 425px) and (max-width: 575px) {
+    body {
+        padding-top: 70px;
+    }
+    
+    .container {
+        padding: 0 12px;
+    }
+    
+    .denture-hero {
+        padding: 2.5rem 0 1.2rem;
+    }
+    
+    .denture-title {
+        font-size: 1.8rem;
+    }
+    
+    .denture-subtitle {
+        font-size: 1.05rem;
+        margin-bottom: 1rem;
+    }
+    
+    .denture-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+    
+    .treatment-badge {
+        padding: 0.4rem 0.9rem;
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .btn-primary, 
+    .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+        padding: 0.9rem 1.5rem;
+    }
+    
+    .stats-bar {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .image-container {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .floating-badge {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        margin: 1.2rem auto 0 !important;
+        padding: 0.8rem;
+    }
+    
+    .badge-icon {
+        font-size: 1.5rem;
+    }
+    
+    .badge-number {
+        font-size: 1.3rem;
+    }
+    
+    .process-timeline::before {
+        display: none;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .step-content {
+        width: 100%;
+        padding: 1.2rem;
+    }
+    
+    .step-duration {
+        margin-top: 0.5rem;
+    }
+    
+    .types-grid,
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .type-card,
+    .benefit-card {
+        padding: 1.3rem;
+    }
+    
+    .type-badge {
+        top: -10px;
+        right: 15px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+    }
+    
+    .cta-features {
+        gap: 1.2rem;
+    }
+    
+    .feature {
+        font-size: 0.95rem;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.7rem;
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+    }
+}
+
+/* Small Mobile (375px to 424px) */
+@media (min-width: 375px) and (max-width: 424px) {
+    body {
+        padding-top: 65px;
+    }
+    
+    .denture-hero {
+        padding: 2rem 0 1rem;
+    }
+    
+    .denture-title {
+        font-size: 1.7rem;
+        line-height: 1.2;
+    }
+    
+    .denture-subtitle {
+        font-size: 1rem;
+    }
+    
+    .denture-description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .btn-primary, 
+    .btn-secondary {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .image-container {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .floating-badge {
+        padding: 0.7rem;
+        transform: scale(0.9);
+    }
+    
+    .badge-number {
+        font-size: 1.2rem;
+    }
+    
+    .badge-text {
+        font-size: 0.75rem;
+    }
+    
+    .stat-item i {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .step-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .step-content p {
+        font-size: 0.9rem;
+    }
+    
+    .type-card h3,
+    .benefit-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .type-card > p,
+    .benefit-card p {
+        font-size: 0.9rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Extra Small Mobile (320px to 374px) */
+@media (min-width: 320px) and (max-width: 374px) {
+    .denture-title {
+        font-size: 1.6rem;
+    }
+    
+    .denture-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .image-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .floating-badge {
+        padding: 0.6rem;
+        transform: scale(0.85);
+    }
+    
+    .badge-icon {
+        font-size: 1.3rem;
+    }
+    
+    .badge-number {
+        font-size: 1.1rem;
+    }
+    
+    .badge-text {
+        font-size: 0.7rem;
+    }
+    
+    .stat-item {
+        padding: 0.7rem;
+    }
+    
+    .stat-item i {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .stat-number {
+        font-size: 1.1rem;
+    }
+    
+    .type-card,
+    .benefit-card {
+        padding: 1.1rem;
+    }
+    
+    .cta-btn {
+        padding: 0.9rem 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Very Small Mobile (below 320px) */
+@media (max-width: 319px) {
+    .denture-title {
+        font-size: 1.5rem;
+    }
+    
+    .image-container {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .floating-badge {
+        padding: 0.5rem;
+        transform: scale(0.8);
+    }
+    
+    .btn-primary, 
+    .btn-secondary {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .stat-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .cta-btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape Orientation Fixes */
+@media (max-height: 600px) and (orientation: landscape) {
+    .denture-hero {
+        padding: 2rem 0 1rem;
+    }
+    
+    .denture-hero-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    
+    .denture-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .denture-description {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .hero-actions {
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+    }
+    
+    .btn-primary, 
+    .btn-secondary {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .image-container {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .floating-badge {
+        top: -10px !important;
+        right: -10px !important;
+        padding: 0.6rem;
+        transform: scale(0.8);
+    }
+    
+    .stats-bar {
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .site-header,
+    .hero-actions,
+    .floating-badge,
+    .cta-section {
+        display: none !important;
+    }
+    
+    body {
+        padding-top: 0;
+        font-size: 12pt;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .denture-hero,
+    .types-section,
+    .process-section,
+    .benefits-section {
+        padding: 1rem 0;
+        background: white !important;
+    }
+    
+    .stats-bar,
+    .type-card,
+    .benefit-card,
+    .step-content {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .denture-hero-content,
+    .denture-hero-image,
+    .stats-bar,
+    .process-step,
+    .type-card,
+    .benefit-card,
+    .floating-badge {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .type-card:hover,
+    .benefit-card:hover,
+    .stat-item:hover {
+        transform: none !important;
+    }
+    
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .cta-btn:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Increase touch target sizes */
+    .btn-primary, 
+    .btn-secondary,
+    .cta-btn,
+    .nav-link,
+    .dropdown-link {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hero-actions {
+        gap: 0.8rem;
+    }
+}
+

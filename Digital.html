@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Dentistry | H Square Dental</title>
+    <link rel="stylesheet" href="style.css">
+    
+     <link rel="stylesheet" href="whitefilling.css">
+     <link rel="stylesheet" href="loading.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+     
+   
+   <div class="dental-loader" id="pageLoader">
+    <div class="tooth-brush">
+        <div class="brush-head"></div>
+        <div class="brush-handle"></div>
+    </div>
+    <div class="tooth"></div>
+    <p>Cleaning Teeth...</p>
+</div> 
+
+
+
+<header class="site-header" id="siteHeader">
+    <div class="header-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <a href="/" class="logo-link" aria-label="H Square Dental - Home">
+                <img 
+                    src="WhatsApp Image 2026-01-12 at 11.36.23 AM (1).jpeg" 
+                    alt="H Square Dental Logo" 
+                    class="logo-image"
+                >
+            </a>
+        </div>
+
+     <!-- Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main navigation">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                
+               <li class="nav-item dropdown">
+    <a href="viewalltreatments.html" class="nav-link dropdown-toggle">
+        Treatments
+        <span class="dropdown-arrow">▼</span>
+    </a>
+    <ul class="dropdown-menu" style="
+        display: flex;
+        flex-wrap: wrap;
+        width: 400px; /* Adjust width as needed */
+        padding: 10px 0;
+    ">
+        <li style="width: 50%; padding: 5px 15px;"><a href="denture.html" class="dropdown-link">Denture</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="whitefilling.html" class="dropdown-link">White Filling</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="rootcanal1.html" class="dropdown-link">Root Canal</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="scaling.html" class="dropdown-link">Scaling</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery1.html" class="dropdown-link">Porcelain Veneer</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery2.html" class="dropdown-link">Clear Aligners</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery3.html" class="dropdown-link">Dental Implants</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery4.html" class="dropdown-link">Teeth Whitening</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Crowns.html" class="dropdown-link">Crowns</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Extraction.html" class="dropdown-link">Tooth Extraction</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="pediatric.html" class="dropdown-link">Pediatric Dentistry</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Digital.html" class="dropdown-link">Digital Dentistry</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Maxillo.html" class="dropdown-link">Maxillo facial Prosthesis</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Cosmetic.html" class="dropdown-link">Cosmetic Dentistry</a></li>
+       
+
+        <li style="width: 100%; padding: 5px 15px; border-top: 1px solid #eee; margin-top: 5px; padding-top: 10px;">
+            <!-- <a href="viewalltreatments.html" class="dropdown-link">View All Treatments</a> -->
+        </li>
+    </ul>
+</li> 
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html#doctor" class="nav-link">Doctor</a></li>
+                
+                <!-- Gallery Dropdown -->
+                <li class="nav-item dropdown">
+                    <a href="#gallery" class="nav-link dropdown-toggle">
+                        Gallery
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                       
+                        <li><a href="photo.html" class="dropdown-link">Photo Gallery</a></li>
+                        <li><a href="video.html" class="dropdown-link">Video Testimonials</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item"><a href="testimonial.html" class="nav-link">Testimonial</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+                <li class="nav-item"><a href="index.html#location" class="nav-link">Location</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" id="mobileNavOverlay">
+            <!-- NEW: Left Side Close Button -->
+           
+            
+            <nav class="mobile-nav" aria-label="Mobile navigation">
+                <div class="mobile-nav-header">
+                    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu"></button>
+                    <a href="/" class="mobile-logo-link" aria-label="H Square Dental - Home">
+                        <img 
+                            src="" 
+                            alt="" 
+                            class="mobile-logo-image"
+                        >
+                    </a>
+                </div>
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+                    
+                  <!-- Mobile Treatments Dropdown -->
+<li class="mobile-nav-item mobile-dropdown">
+    <div class="mobile-dropdown-toggle">
+        <span class="mobile-nav-link">Treatments</span>
+        <button class="mobile-dropdown-arrow" aria-label="Toggle treatments dropdown">+</button>
+    </div>
+    <ul class="mobile-dropdown-menu" style="
+        display: none !important;
+        max-height: 500px !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 10px 0 !important;
+        margin-left: 20px !important;
+        background: #f8f9fa !important;
+        border-left: 2px solid #2A5934 !important;
+    ">
+        <li style="padding: 8px 20px !important;"><a href="denture.html" class="mobile-dropdown-link">Denture</a></li>
+        <li style="padding: 8px 20px !important;"><a href="whitefilling.html" class="mobile-dropdown-link">White Filling</a></li>
+        <li style="padding: 8px 20px !important;"><a href="rootcanal1.html" class="mobile-dropdown-link">Root Canal</a></li>
+        <li style="padding: 8px 20px !important;"><a href="scaling.html" class="mobile-dropdown-link">Scaling</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery1.html" class="mobile-dropdown-link">Porcelain Veneer</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery2.html" class="mobile-dropdown-link">Clear Aligners</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery3.html" class="mobile-dropdown-link">Dental Implants</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery4.html" class="mobile-dropdown-link">Teeth Whitening</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Crowns.html" class="mobile-dropdown-link">Crowns & Bridges</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Cosmetic.html" class="mobile-dropdown-link">Cosmetic Dentistry</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Extraction.html" class="mobile-dropdown-link">Tooth Extraction</a></li>
+        <li style="padding: 8px 20px !important;"><a href="pediatric.html" class="mobile-dropdown-link">Pediatric Dentistry</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Maxillo.html" class="mobile-dropdown-link">Maxillofacial Prosthesis</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Digital.html" class="mobile-dropdown-link">Digital Dentistry</a></li>
+    </ul>
+</li>
+
+<script>
+// Add this script after your existing scripts
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile dropdown toggle functionality
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        // Remove any existing event listeners first
+        const newToggle = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(newToggle, toggle);
+        
+        // Add new event listener
+        newToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const dropdownMenu = this.nextElementSibling;
+            const arrow = this.querySelector('.mobile-dropdown-arrow');
+            
+            // Toggle display
+            if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+                dropdownMenu.style.display = 'block';
+                if (arrow) arrow.textContent = '−'; // Minus sign when open
+                this.parentElement.classList.add('active');
+            } else {
+                dropdownMenu.style.display = 'none';
+                if (arrow) arrow.textContent = '+'; // Plus sign when closed
+                this.parentElement.classList.remove('active');
+            }
+        });
+    });
+    
+    // Initialize all dropdowns as closed
+    document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+        menu.style.display = 'none';
+    });
+    
+    // Initialize all arrows
+    document.querySelectorAll('.mobile-dropdown-arrow').forEach(arrow => {
+        arrow.textContent = '+';
+    });
+});
+
+// Also update your existing JavaScript to prevent conflicts
+const toggle = document.getElementById('mobileMenuToggle');
+const overlay = document.getElementById('mobileNavOverlay');
+
+if (toggle) {
+    toggle.addEventListener('click', () => {
+        overlay.classList.toggle('active');
+        // Close all dropdowns when opening/closing mobile menu
+        document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+            menu.style.display = 'none';
+        });
+        document.querySelectorAll('.mobile-dropdown-arrow').forEach(arrow => {
+            arrow.textContent = '+';
+        });
+    });
+}
+</script>
+                    </li>
+                    
+                    <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#doctor" class="mobile-nav-link">Doctor</a></li>
+
+                    <!-- Mobile Gallery Dropdown -->
+                    <li class="mobile-nav-item mobile-dropdown">
+                        <div class="mobile-dropdown-toggle">
+                            <span class="mobile-nav-link">Gallery</span>
+                            <button class="mobile-dropdown-arrow" aria-label="Toggle gallery dropdown"></button>
+                        </div>
+                        <ul class="mobile-dropdown-menu">
+                         
+                             <li><a href="photo.html" class="mobile-dropdown-link">Photo Gallery</a></li>
+                              <li><a href="video.html" class="mobile-dropdown-link">Video Gallery</a></li>
+                           
+                        </ul>
+                    </li>
+
+                    <li class="mobile-nav-item"><a href="testimonial.html" class="mobile-nav-link">Testimonial</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#location" class="mobile-nav-link">Location</a></li>
+                </ul>
+                <div class="mobile-contact-info">
+                    <p class="clinic-tagline">Where Health Meets Happiness</p>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+    <section class="whitefilling-hero">
+    <div class="container hero-wrapper">
+        <div class="whitefilling-hero-content">
+            <div class="treatment-badge">
+                <span>Advanced Technology</span>
+                <i class="fas fa-microchip"></i>
+            </div>
+            <h1 class="whitefilling-title"> Digital Dentistry<span class="highlight"style="color: #000;"></span></h1>
+            <p class="whitefilling-subtitle">Precision, Comfort & Efficiency with Cutting-Edge Dental Technology</p>
+            <p class="whitefilling-description">Experience the future of dental care with digital scanning, advanced imaging, and computer-guided treatments for superior results.</p>
+            
+            <div class="hero-actions">
+                <a href="index.html#contact" class="btn-primary">
+                    <i class="fas fa-calendar-check"></i> Book Digital Consultation
+                </a>
+                <a href="tel:+919042779903" class="btn-secondary">
+                    <i class="fas fa-phone-alt"></i> +91 90427 79903
+                </a>
+            </div>
+        </div>
+        
+        <div class="whitefilling-hero-image">
+            <div class="image-container">
+                <div class="whitefilling-image-wrapper">
+                    <img src="https://i.pinimg.com/736x/46/eb/ff/46ebffce1df5f26160cf23f4e1943698.jpg" 
+                         alt="Digital Dentistry Technology - H Square Dental" 
+                         class="whitefilling-image">
+                <!--    <div class="image-overlay">-->
+                <!--        <div class="overlay-content">-->
+                <!--            <i class="fas fa-robot"></i>-->
+                <!--            <span>Smart Technology</span>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
+                
+                <!--<div class="floating-badge success-badge">-->
+                <!--    <div class="badge-icon">📐</div>-->
+                <!--    <div class="badge-content">-->
+                <!--        <span class="badge-number">100%</span>-->
+                <!--        <span class="badge-text">More Accurate</span>-->
+                <!--    </div>-->
+                <!--</div>-->
+                
+            <!--    <div class="floating-badge experience-badge">-->
+            <!--        <div class="badge-icon">⚡</div>-->
+            <!--        <div class="badge-content">-->
+            <!--            <span class="badge-number">50% Faster</span>-->
+            <!--            <span class="badge-text">Treatment Time</span>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+        </div>
+    </div>
+
+   
+</section>
+
+<div class="trust-cards-container">
+  <!-- Paste all 4 trust-card divs here -->
+
+  <!-- Paste all 4 trust-card divs here -->
+    
+ <!-- 1. Experience -->
+
+      <div class="trust-card">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" 
+                  stroke="#2A5934" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="trust-content">
+          <h3 class="trust-number">Digital</h3>
+          <p class="trust-text">Impressions</p>
+        </div>
+      </div>
+      
+      <!-- 2. Patient Care -->
+      <div class="trust-card">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z" 
+                  stroke="#2A5934" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 6V12L16 14" 
+                  stroke="#2A5934" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="trust-content">
+          <h3 class="trust-number">3D</h3>
+          <p class="trust-text">Imaging</p>
+        </div>
+      </div>
+      
+      <!-- 3. Technology -->
+      <div class="trust-card">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" 
+                  stroke="#2A5934" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 6V12L16 14" 
+                  stroke="#2A5934" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 22V18" 
+                  stroke="#2A5934" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 12H18" 
+                  stroke="#2A5934" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12H6" 
+                  stroke="#2A5934" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 2V6" 
+                  stroke="#2A5934" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="trust-content">
+          <h3 class="trust-number">Advanced</h3>
+          <p class="trust-text">Technology</p>
+        </div>
+      </div>
+      
+      <!-- 4. Care Quality -->
+      <div class="trust-card">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M20.42 4.58C19.92 4.08 19.32 3.68 18.62 3.48C17.92 3.28 17.22 3.28 16.52 3.48C15.82 3.68 15.22 4.08 14.72 4.58L14.02 5.28L13.32 4.58C12.32 3.58 10.92 3.08 9.52 3.08C8.12 3.08 6.72 3.58 5.72 4.58C4.72 5.58 4.22 6.98 4.22 8.38C4.22 9.78 4.72 11.18 5.72 12.18L6.42 12.88L14.02 20.48C14.52 20.98 15.12 21.38 15.82 21.58C16.52 21.78 17.22 21.78 17.92 21.58C18.62 21.38 19.22 20.98 19.72 20.48L20.42 19.78C21.42 18.78 21.92 17.38 21.92 15.98C21.92 14.58 21.42 13.18 20.42 12.18L12.82 4.58H14.72L20.42 10.28C21.42 11.28 21.92 12.68 21.92 14.08C21.92 15.48 21.42 16.88 20.42 17.88L19.72 18.58C19.22 19.08 18.62 19.48 17.92 19.68C17.22 19.88 16.52 19.88 15.82 19.68C15.12 19.48 14.52 19.08 14.02 18.58L6.42 10.98L5.72 10.28C4.72 9.28 4.22 7.88 4.22 6.48C4.22 5.08 4.72 3.68 5.72 2.68C6.72 1.68 8.12 1.18 9.52 1.18C10.92 1.18 12.32 1.68 13.32 2.68L14.02 3.38L14.72 2.68C15.72 1.68 17.12 1.18 18.52 1.18C19.92 1.18 21.32 1.68 22.32 2.68C23.32 3.68 23.82 5.08 23.82 6.48C23.82 7.88 23.32 9.28 22.32 10.28L16.62 15.98L14.72 14.08L20.42 8.38C21.42 7.38 21.92 5.98 21.92 4.58C21.92 3.18 21.42 1.78 20.42 0.78C19.42 -0.22 18.02 -0.72 16.62 -0.72C15.22 -0.72 13.82 -0.22 12.82 0.78L12.12 1.48L11.42 0.78C10.42 -0.22 9.02 -0.72 7.62 -0.72C6.22 -0.72 4.82 -0.22 3.82 0.78C2.82 1.78 2.32 3.18 2.32 4.58C2.32 5.98 2.82 7.38 3.82 8.38L4.52 9.08L3.82 9.78C2.82 10.78 2.32 12.18 2.32 13.58C2.32 14.98 2.82 16.38 3.82 17.38L11.42 24.98H12.82L20.42 17.38C21.42 16.38 21.92 14.98 21.92 13.58C21.92 12.18 21.42 10.78 20.42 9.78L14.72 4.08L12.82 2.18L14.72 0.28L20.42 4.58Z" 
+                  fill="#2A5934"/>
+          </svg>
+        </div>
+        <div class="trust-content">
+            <!-- <i class="fas fa-smile"></i>
+                <div class="stat-content"> -->
+          <h3 class="trust-number">Same Day</h3>
+          <p class="trust-text">Restorations</p>
+        </div>
+      </div>
+      </div>
+
+<section class="types-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Digital Technologies<span class="highlight"></span></h2>
+            <p>Advanced digital solutions for modern dental care</p>
+        </div>
+        
+        <div class="types-grid">
+            <div class="type-card">
+                <div class="type-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3>Digital Scanning</h3>
+                <p>Intraoral scanners for precise digital impressions</p>
+                <ul class="type-features">
+                    <li><i class="fas fa-check-circle"></i> No messy impression materials</li>
+                    <li><i class="fas fa-check-circle"></i> Highly accurate 3D models</li>
+                    <li><i class="fas fa-check-circle"></i> Real-time visualization</li>
+                    <li><i class="fas fa-check-circle"></i> Improved patient comfort</li>
+                </ul>
+                <div class="type-indicator">
+                    <span>Best For:</span>
+                    <strong>Crowns, bridges, aligners</strong>
+                </div>
+            </div>
+            
+            <div class="type-card featured">
+                <div class="type-badge">Most Advanced</div>
+                <div class="type-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <h3>3D CBCT Imaging</h3>
+                <p>Cone Beam Computed Tomography scanning</p>
+                <ul class="type-features">
+                    <li><i class="fas fa-check-circle"></i> Detailed 3D bone structure</li>
+                    <li><i class="fas fa-check-circle"></i> Implant planning & placement</li>
+                    <li><i class="fas fa-check-circle"></i> Lower radiation than medical CT</li>
+                    <li><i class="fas fa-check-circle"></i> Root canal diagnostics</li>
+                </ul>
+                <div class="type-indicator">
+                    <span>Best For:</span>
+                    <strong>Implants, surgery planning</strong>
+                </div>
+            </div>
+            
+            <div class="type-card">
+                <div class="type-icon">
+                    <i class="fas fa-print"></i>
+                </div>
+                <h3>Advanced digital dentistry</h3>
+                <p>Computer-Aided Design & Manufacturing</p>
+                <ul class="type-features">
+                    <li><i class="fas fa-check-circle"></i> Same-day crowns & restorations</li>
+                    <li><i class="fas fa-check-circle"></i> Precise computer milling</li>
+                    <li><i class="fas fa-check-circle"></i> Custom dental appliances</li>
+                    <li><i class="fas fa-check-circle"></i> Digital smile design</li>
+                </ul>
+                <div class="type-indicator">
+                    <span>Best For:</span>
+                    <strong>Same-day dentistry</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="process-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Digital Treatment Process<span class="highlight"></span></h2>
+            <p>How digital technology enhances your dental experience</p>
+        </div>
+        
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Digital Examination</h3>
+                    <p>Comprehensive digital assessment using intraoral cameras and scanners to capture precise images of your teeth and gums.</p>
+                </div>
+                <div class="step-duration">
+                    <i class="fas fa-clock"></i>
+                    <span>15-20 mins</span>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>3D Scanning & Imaging</h3>
+                    <p>Capture detailed digital impressions using intraoral scanners, eliminating traditional messy impression materials.</p>
+                </div>
+                <div class="step-duration">
+                    <i class="fas fa-clock"></i>
+                    <span>10-15 mins</span>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Virtual Treatment Planning</h3>
+                    <p>Using specialized software to design your treatment, simulate results, and plan procedures with millimeter precision.</p>
+                </div>
+                <div class="step-duration">
+                    <i class="fas fa-clock"></i>
+                    <span>20-30 mins</span>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Computer-Guided Procedure</h3>
+                    <p>Execution of treatment using digital guides and precision instruments for optimal accuracy and minimal invasiveness.</p>
+                </div>
+                <div class="step-duration">
+                    <i class="fas fa-clock"></i>
+                    <span>Varies</span>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Digital Follow-up</h3>
+                    <p>Post-treatment digital assessment and remote monitoring capabilities for ongoing care and maintenance.</p>
+                </div>
+                <div class="step-duration">
+                    <i class="fas fa-clock"></i>
+                    <span>10-15 mins</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="benefits-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Benefits of Digital Dentistry<span class="highlight"></span></h2>
+            <p>Experience superior dental care with modern technology</p>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Enhanced Precision</h3>
+                <p>Sub-millimeter accuracy in diagnostics, planning, and execution of dental treatments.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-user-clock"></i>
+                </div>
+                <h3>Reduced Treatment Time</h3>
+                <p>Faster procedures with same-day restorations and fewer appointments needed.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-smile"></i>
+                </div>
+                <h3>Improved Comfort</h3>
+                <p>No messy impression materials, less chair time, and minimally invasive procedures.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Visual Treatment Preview</h3>
+                <p>See your expected results before treatment begins with digital smile design simulations.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>Digital Records</h3>
+                <p>Secure digital storage of dental records, X-rays, and treatment plans for easy access.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Predictable Outcomes</h3>
+                <p>Computer-guided procedures ensure consistent, predictable, and high-quality results.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Experience the Future of Dentistry Today</h2>
+            <p>Schedule a digital consultation and see how advanced technology can transform your dental care experience.</p>
+            
+            <div class="cta-buttons">
+                <a href="tel:+919042779903" class="cta-btn phone-btn">
+                    <i class="fas fa-phone-alt"></i>
+                    Call Now: +91 90427 79903
+                </a>
+                <a href="index.html#contact" class="cta-btn appointment-btn">
+                    <i class="fas fa-calendar-alt"></i>
+                    Book Digital Consultation
+                </a>
+            </div>
+            
+            <div class="cta-features">
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Free Digital Scan Demo</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Virtual Treatment Preview</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Same-Day Restorations Available</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<body style="overflow: visible !important; min-height: 100vh !important; position: relative !important; display: block !important; visibility: visible !important; opacity: 1 !important;"></body>
+<script src="script.js"></script>
+<script>
+    
+
+const toggle = document.getElementById('mobileMenuToggle');
+const overlay = document.getElementById('mobileNavOverlay');
+
+toggle.addEventListener('click', () => {
+  overlay.classList.toggle('active');
+});
+
+document.querySelectorAll('.mobile-dropdown-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.parentElement.classList.toggle('active');
+  });
+});
+
+</script>
+<script src="loading.js"></script>
+<!-- Floating WhatsApp Button with SVG -->
+<div class="whatsapp-float" onclick="openWhatsApp()">
+  <div class="whatsapp-icon">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 3.026.872 5.847 2.376 8.238L.512 31.488l7.25-1.864C10.153 31.128 12.974 32 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0z"/>
+      <path d="M24.538 22.625c-0.35 0.987-1.725 1.812-2.812 2.062-0.875 0.2-2.025 0.35-6.288-1.213-5.413-1.963-8.862-6.787-9.125-7.1-0.262-0.313-2.1-2.8-2.1-5.338 0-2.537 1.312-3.775 1.837-4.313 0.525-0.537 1.137-0.687 1.525-0.687 0.387 0 0.7 0.025 1 0.05 0.3 0.025 0.688-0.125 1.075 0.8 0.387 0.925 1.325 3.2 1.437 3.438 0.112 0.237 0.187 0.512-0.062 0.837-0.25 0.325-0.437 0.512-0.862 0.812-0.425 0.3-0.837 0.662-1.187 1.062-0.35 0.4-0.275 0.75 0.062 1.212 0.338 0.463 1.5 2.013 3.225 3.263 2.175 1.575 3.938 2.062 4.575 2.288 0.638 0.225 1.013 0.188 1.388-0.113 0.375-0.3 1.6-1.5 2.038-2.012 0.438-0.512 0.875-0.438 1.463-0.25 0.588 0.188 3.7 1.75 4.338 2.062 0.637 0.313 1.062 0.475 1.213 0.738 0.15 0.263 0.15 1.513-0.338 2.488z" fill="white"/>
+    </svg>
+  </div>
+  <div class="whatsapp-text">
+    Chat on WhatsApp
+  </div>
+</div>
+
+<script>
+function openWhatsApp() {
+  // Pre-filled message
+  const message = encodeURIComponent("Hi, I'm interested in Digital Dentistry at H Square Dental. Can you tell me more about your technology?");
+  // Phone number with country code
+  const phone = "919042779903";
+  // WhatsApp URL with message
+  const url = `https://wa.me/${phone}?text=${message}`;
+  
+  // Open WhatsApp in new tab
+  window.open(url, '_blank');
+}
+</script>
+
+<style>
+/* Floating WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  border-radius: 50px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  z-index: 9999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  background: #128C7E;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.whatsapp-text {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 15px;
+  }
+  
+  .whatsapp-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .whatsapp-text {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    bottom: 10px;
+    right: 10px;
+    padding: 8px 12px;
+  }
+  
+  .whatsapp-text {
+    display: none;
+  }
+}
+</style>
+</body>
+</html>

@@ -1,0 +1,122 @@
+/* Dental Loading Animation */
+.dental-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.dental-loader.hide {
+    display: none;
+}
+
+/* Tooth Design */
+.tooth {
+    width: 80px;
+    height: 100px;
+    background: white;
+    border: 4px solid #2A5934;
+    border-radius: 10px;
+    position: relative;
+    margin: 20px 0;
+}
+
+/* Tooth Details */
+.tooth:before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    width: 12px;
+    height: 15px;
+    background: #2A5934;
+    border-radius: 6px;
+}
+
+.tooth:after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    width: 12px;
+    height: 15px;
+    background: #2A5934;
+    border-radius: 6px;
+}
+
+/* Toothbrush Design */
+.tooth-brush {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    animation: brushMove 2s infinite;
+}
+
+.brush-handle {
+    width: 60px;
+    height: 10px;
+    background: #4ade80;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+}
+
+.brush-head {
+    width: 40px;
+    height: 15px;
+    background: #2A5934;
+    border-radius: 8px 0 0 8px;
+    position: absolute;
+    right: 0;
+    top: -2px;
+}
+
+/* Brush bristles */
+.brush-head:before {
+    content: '';
+    position: absolute;
+    right: 5px;
+    top: 3px;
+    width: 30px;
+    height: 8px;
+    background: white;
+    border-radius: 4px;
+}
+
+.dental-loader p {
+    color: #2A5934;
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Animations */
+@keyframes brushMove {
+    0%, 100% {
+        transform: translateX(-40px) rotate(10deg);
+    }
+    50% {
+        transform: translateX(40px) rotate(-5deg);
+    }
+}
+
+.tooth {
+    animation: toothClean 2s infinite;
+}
+
+@keyframes toothClean {
+    0%, 100% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+    }
+}   

@@ -1,0 +1,354 @@
+
+/* ANNOUNCEMENT BAR - FIXED TOP BANNER */
+.announcement-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #2A5934 0%, #3a7a4a 100%);
+    color: white;
+    z-index: 2000;
+    padding: 0.6rem 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.announcement-bar.hidden {
+    transform: translateY(-100%);
+}
+
+.announcement-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Left Section - Contact & Timings */
+.announcement-left {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.announcement-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.announcement-icon {
+    flex-shrink: 0;
+    opacity: 0.9;
+}
+
+.announcement-text {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.8rem;
+}
+
+.emergency-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.emergency-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffeb3b;
+}
+
+/* Center Section - Special Offer */
+.announcement-center {
+    flex: 1;
+    text-align: center;
+}
+
+.special-offer {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { background: rgba(255, 255, 255, 0.15); }
+    50% { background: rgba(255, 255, 255, 0.25); }
+    100% { background: rgba(255, 255, 255, 0.15); }
+}
+
+.special-offer:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.offer-badge {
+    background: #F4B942;
+    color: #333;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+}
+
+.offer-text {
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.offer-arrow {
+    margin-left: 0.2rem;
+    opacity: 0.9;
+}
+
+/* Right Section - Social & Language */
+.announcement-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.social-link {
+    color: white;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-link:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.language-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.3s ease;
+}
+
+.language-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.announcement-close {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.announcement-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .announcement-container {
+        padding: 0 1.5rem;
+        gap: 1rem;
+    }
+    
+    .announcement-left {
+        gap: 1rem;
+    }
+    
+    .offer-text {
+        display: none; /* Hide full text on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .announcement-bar {
+        padding: 0.8rem 0;
+    }
+    
+    .announcement-container {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 0 1rem 0 3.5rem;
+    }
+    
+    .announcement-left {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+        width: 100%;
+    }
+    
+    .announcement-center {
+        order: -1;
+        width: 100%;
+    }
+    
+    .special-offer {
+        width: 100%;
+        justify-content: center;
+        padding: 0.6rem 1rem;
+    }
+    
+    .offer-text {
+        display: inline; /* Show text again on mobile */
+        font-size: 0.8rem;
+    }
+    
+    .announcement-right {
+        display: none; /* Hide social links on mobile */
+    }
+    
+    .announcement-close {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .announcement-text {
+        font-size: 0.75rem;
+    }
+    
+    .offer-badge {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .offer-text {
+        font-size: 0.75rem;
+    }
+}
+/* END OF ANNOUNCEMENT BAR STYLES */
+
+
+<!-- ANNOUNCEMENT BAR - CLINICAL INFORMATION AND PROMOTIONS -->
+<section class="announcement-section">
+    <!-- Top announcement bar for emergency contact, hours, offers, and social links -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="announcement-container">
+            <!-- LEFT SECTION: Critical contact information and operating hours -->
+            <div class="announcement-left">
+                <!-- Emergency contact with phone icon for immediate assistance -->
+                <div class="announcement-item">
+                    <svg class="announcement-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                        <path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    <span class="announcement-text">
+                        <!-- Emergency contact with click-to-call functionality for mobile users -->
+                        <strong>Emergency:</strong> <a href="tel:+919042779903" class="emergency-link" aria-label="Call emergency number">+91 90427 79903</a>
+                    </span>
+                </div>
+                
+                <!-- Clinic operating hours with calendar icon -->
+                <div class="announcement-item">
+                    <svg class="announcement-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                        <path fill="currentColor" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="announcement-text">
+                        <strong>Timings:</strong> Mon-Sat: 9 AM - 9 PM | Sun: 10 AM - 2 PM
+                    </span>
+                </div>
+            </div>
+            
+            <!-- CENTER SECTION: Promotional offer with clear call-to-action -->
+            <div class="announcement-center">
+                <a href="#contact" class="special-offer" aria-label="Learn about special offer for new patients">
+                    <!-- Visual badge to draw attention to the promotion -->
+                    <span class="offer-badge" role="note">SPECIAL OFFER</span>
+                    <!-- Main promotional text highlighting free services for new patients -->
+                    <span class="offer-text">Free Dental Checkup + X-Ray for New Patients</span>
+                    <!-- Arrow icon indicating this is a clickable link -->
+                    <svg class="offer-arrow" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                        <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- RIGHT SECTION: Social media links and language selector -->
+            <div class="announcement-right">
+                <!-- Social media icons for patient engagement and online presence -->
+                <div class="social-links" role="group" aria-label="Social media links">
+                    <a href="https://facebook.com" target="_blank" class="social-link" rel="noopener noreferrer" aria-label="Visit our Facebook page">
+                        <svg class="social-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                            <path fill="currentColor" d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link" rel="noopener noreferrer" aria-label="Visit our Instagram page">
+                        <svg class="social-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                            <path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://maps.google.com" target="_blank" class="social-link" rel="noopener noreferrer" aria-label="Find us on Google Maps">
+                        <svg class="social-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                            <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Language selector for multilingual patients (expandable functionality) -->
+                <div class="language-selector">
+                    <button class="language-btn" aria-label="Select language" aria-haspopup="true">
+                        <span>EN</span>
+                        <svg class="lang-arrow" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
+                            <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MOBILE CLOSE BUTTON: Allows users to hide the announcement bar on small screens -->
+        <button class="announcement-close" id="announcementClose" aria-label="Close announcement bar">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </button>
+    </div>
+</section>

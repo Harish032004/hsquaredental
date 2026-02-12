@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Testimonials | H Square Dental</title>
+  
+    <link rel="stylesheet" href="whitefilling.css">
+    <link rel="stylesheet" href="loading.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* VIDEO TESTIMONIAL GALLERY STYLES */
+        
+        .video-gallery {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8faf9 0%, #f0f7f2 100%);
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: slideInDown 0.8s ease-out;
+        }
+        
+        .gallery-header h1 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-header .highlight {
+            color: #2A5934;
+            position: relative;
+        }
+        
+        .gallery-header .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2A5934, #4CAF50);
+            border-radius: 2px;
+        }
+        
+        .gallery-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* VIDEO GRID */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(42, 89, 52, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            animation: scaleIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        
+        .video-card:nth-child(1) { animation-delay: 0.1s; }
+        .video-card:nth-child(2) { animation-delay: 0.2s; }
+        .video-card:nth-child(3) { animation-delay: 0.3s; }
+        .video-card:nth-child(4) { animation-delay: 0.4s; }
+        .video-card:nth-child(5) { animation-delay: 0.5s; }
+        .video-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        .video-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(42, 89, 52, 0.2);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
+            border-bottom: 4px solid #2A5934;
+        }
+        
+        .video-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(42, 89, 52, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+        
+        .play-button:hover {
+            background: #2A5934;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: white;
+            z-index: 1;
+        }
+        
+        .video-duration {
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+        }
+        
+        .patient-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .patient-name i {
+            color: #2A5934;
+        }
+        
+        .treatment-type {
+            display: inline-block;
+            background: rgba(42, 89, 52, 0.1);
+            color: #2A5934;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .patient-quote {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            border-left: 3px solid #2A5934;
+            padding-left: 15px;
+        }
+        
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .stat-item i {
+            color: #2A5934;
+        }
+        
+        /* STATS SECTION */
+        .stats-section {
+            background: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #f8faf9, #f0f7f2);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(42, 89, 52, 0.08);
+            transition: all 0.3s ease;
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(42, 89, 52, 0.15);
+        }
+        
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2A5934, #4CAF50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #2A5934;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-text {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        /* VIDEO MODAL */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .video-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            animation: scaleInModal 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .modal-video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: #2A5934;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        
+        .modal-close:hover {
+            background: #4CAF50;
+            transform: rotate(90deg);
+        }
+        
+        /* CTA SECTION */
+        .gallery-cta {
+            background: linear-gradient(135deg, #2A5934 0%, #3a7a4a 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .cta-content h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .video-cta {
+            background: white;
+            color: #2A5934;
+        }
+        
+        .video-cta:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .appointment-cta {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        .appointment-cta:hover {
+            background: white;
+            color: #2A5934;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* ANIMATIONS */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes scaleInModal {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* LOADING SPINNER FOR VIDEO */
+        .video-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top: 5px solid #2A5934;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* MOBILE MENU FIXED STYLES */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1002;
+            position: relative;
+            width: 40px;
+            height: 30px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hamburger-line {
+            width: 30px;
+            height: 3px;
+            background: #2A5934;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        /* Mobile Navigation Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 320px;
+            height: 100vh;
+            background: white;
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow-y: auto;
+            padding: 20px;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+        
+        .mobile-nav-overlay.active .mobile-nav {
+            right: 0;
+        }
+        
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2A5934;
+        }
+        
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #2A5934;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-close:hover {
+            background: #f0f7f2;
+        }
+        
+        .mobile-logo-image {
+            height: 40px;
+            width: auto;
+        }
+        
+        .mobile-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .mobile-nav-item {
+            margin-bottom: 10px;
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .mobile-nav-link:hover {
+            background: #f0f7f2;
+            color: #2A5934;
+            border-left-color: #2A5934;
+        }
+        
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 15px;
+        }
+        
+        .mobile-dropdown-arrow {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #2A5934;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-dropdown-menu {
+            list-style: none;
+            padding-left: 20px;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .mobile-dropdown-menu.active {
+            max-height: 500px;
+            margin-bottom: 10px;
+        }
+        
+        .mobile-dropdown-link {
+            display: block;
+            padding: 12px 15px;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-left: 2px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-dropdown-link:hover {
+            color: #2A5934;
+            border-left-color: #2A5934;
+            padding-left: 20px;
+        }
+        
+        .mobile-contact-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .clinic-tagline {
+            color: #2A5934;
+            font-weight: 600;
+            font-style: italic;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .video-gallery {
+                padding: 3rem 0;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-container {
+                padding-top: 65%;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .patient-name {
+                font-size: 1.2rem;
+            }
+            
+            .mobile-nav {
+                width: 90%;
+            }
+        }
+        
+        /* STATS SECTION - RESPONSIVE FIXES */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .stats-section {
+                padding: 2rem 0;
+            }
+            
+            .stats-grid {
+                gap: 1rem;
+                padding: 0 10px;
+            }
+            
+            .stat-card {
+                padding: 1rem;
+                min-height: 160px;
+            }
+            
+            .stat-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .stat-text {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+   <div class="dental-loader" id="pageLoader">
+    <div class="tooth-brush">
+        <div class="brush-head"></div>
+        <div class="brush-handle"></div>
+    </div>
+    <div class="tooth"></div>
+    <p>Cleaning Teeth...</p>
+</div>
+
+<header class="site-header" id="siteHeader">
+    <div class="header-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <a href="/" class="logo-link" aria-label="H Square Dental - Home">
+                <img 
+                    src="WhatsApp Image 2026-01-12 at 11.36.23 AM (1).jpeg" 
+                    alt="H Square Dental Logo" 
+                    class="logo-image"
+                >
+            </a>
+        </div>
+
+       <!-- Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main navigation">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                
+               <li class="nav-item dropdown">
+    <a href="viewalltreatments.html" class="nav-link dropdown-toggle">
+        Treatments
+        <span class="dropdown-arrow">▼</span>
+    </a>
+    <ul class="dropdown-menu" style="
+        display: flex;
+        flex-wrap: wrap;
+        width: 400px; /* Adjust width as needed */
+        padding: 10px 0;
+    ">
+        <li style="width: 50%; padding: 5px 15px;"><a href="denture.html" class="dropdown-link">Denture</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="whitefilling.html" class="dropdown-link">White Filling</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="rootcanal1.html" class="dropdown-link">Root Canal</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="scaling.html" class="dropdown-link">Scaling</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery1.html" class="dropdown-link">Porcelain Veneer</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery2.html" class="dropdown-link">Clear Aligners</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery3.html" class="dropdown-link">Dental Implants</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery4.html" class="dropdown-link">Teeth Whitening</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Crowns.html" class="dropdown-link">Crowns</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Extraction.html" class="dropdown-link">Tooth Extraction</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="pediatric.html" class="dropdown-link">Pediatric Dentistry</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Digital.html" class="dropdown-link">Digital Dentistry</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Maxillo.html" class="dropdown-link">Maxillo facial Prosthesis</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Cosmetic.html" class="dropdown-link">Cosmetic Dentistry</a></li>
+       
+
+        <li style="width: 100%; padding: 5px 15px; border-top: 1px solid #eee; margin-top: 5px; padding-top: 10px;">
+            <!-- <a href="viewalltreatments.html" class="dropdown-link">View All Treatments</a> -->
+        </li>
+    </ul>
+</li> 
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html#doctor" class="nav-link">Doctor</a></li>
+                
+                <!-- Gallery Dropdown -->
+                <li class="nav-item dropdown">
+                    <a href="#gallery" class="nav-link dropdown-toggle">
+                        Gallery
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                       
+                        <li><a href="photo.html" class="dropdown-link">Photo Gallery</a></li>
+                        <li><a href="video.html" class="dropdown-link">Video Testimonials</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item"><a href="testimonial.html" class="nav-link">Testimonial</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+                <li class="nav-item"><a href="index.html#location" class="nav-link">Location</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" id="mobileNavOverlay">
+            <!-- NEW: Left Side Close Button -->
+           
+            
+            <nav class="mobile-nav" aria-label="Mobile navigation">
+                <div class="mobile-nav-header">
+                    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu"></button>
+                    <a href="/" class="mobile-logo-link" aria-label="H Square Dental - Home">
+                        <img 
+                            src="" 
+                            alt="" 
+                            class="mobile-logo-image"
+                        >
+                    </a>
+                </div>
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+                    
+                  <!-- Mobile Treatments Dropdown -->
+<li class="mobile-nav-item mobile-dropdown">
+    <div class="mobile-dropdown-toggle">
+        <span class="mobile-nav-link">Treatments</span>
+        <button class="mobile-dropdown-arrow" aria-label="Toggle treatments dropdown">+</button>
+    </div>
+    <ul class="mobile-dropdown-menu" style="
+        display: none !important;
+        max-height: 500px !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 10px 0 !important;
+        margin-left: 20px !important;
+        background: #f8f9fa !important;
+        border-left: 2px solid #2A5934 !important;
+    ">
+        <li style="padding: 8px 20px !important;"><a href="denture.html" class="mobile-dropdown-link">Denture</a></li>
+        <li style="padding: 8px 20px !important;"><a href="whitefilling.html" class="mobile-dropdown-link">White Filling</a></li>
+        <li style="padding: 8px 20px !important;"><a href="rootcanal1.html" class="mobile-dropdown-link">Root Canal</a></li>
+        <li style="padding: 8px 20px !important;"><a href="scaling.html" class="mobile-dropdown-link">Scaling</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery1.html" class="mobile-dropdown-link">Porcelain Veneer</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery2.html" class="mobile-dropdown-link">Clear Aligners</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery3.html" class="mobile-dropdown-link">Dental Implants</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery4.html" class="mobile-dropdown-link">Teeth Whitening</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Crowns.html" class="mobile-dropdown-link">Crowns & Bridges</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Cosmetic.html" class="mobile-dropdown-link">Cosmetic Dentistry</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Extraction.html" class="mobile-dropdown-link">Tooth Extraction</a></li>
+        <li style="padding: 8px 20px !important;"><a href="pediatric.html" class="mobile-dropdown-link">Pediatric Dentistry</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Maxillo.html" class="mobile-dropdown-link">Maxillofacial Prosthesis</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Digital.html" class="mobile-dropdown-link">Digital Dentistry</a></li>
+    </ul>
+</li>
+
+<script>
+// Add this script after your existing scripts
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile dropdown toggle functionality
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        // Remove any existing event listeners first
+        const newToggle = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(newToggle, toggle);
+        
+        // Add new event listener
+        newToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const dropdownMenu = this.nextElementSibling;
+            const arrow = this.querySelector('.mobile-dropdown-arrow');
+            
+            // Toggle display
+            if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+                dropdownMenu.style.display = 'block';
+                if (arrow) arrow.textContent = '−'; // Minus sign when open
+                this.parentElement.classList.add('active');
+            } else {
+                dropdownMenu.style.display = 'none';
+                if (arrow) arrow.textContent = '+'; // Plus sign when closed
+                this.parentElement.classList.remove('active');
+            }
+        });
+    });
+    
+    // Initialize all dropdowns as closed
+    document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+        menu.style.display = 'none';
+    });
+    
+    // Initialize all arrows
+    document.querySelectorAll('.mobile-dropdown-arrow').forEach(arrow => {
+        arrow.textContent = '+';
+    });
+});
+
+// Also update your existing JavaScript to prevent conflicts
+const toggle = document.getElementById('mobileMenuToggle');
+const overlay = document.getElementById('mobileNavOverlay');
+
+if (toggle) {
+    toggle.addEventListener('click', () => {
+        overlay.classList.toggle('active');
+        // Close all dropdowns when opening/closing mobile menu
+        document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+            menu.style.display = 'none';
+        });
+        document.querySelectorAll('.mobile-dropdown-arrow').forEach(arrow => {
+            arrow.textContent = '+';
+        });
+    });
+}
+</script>
+                    </li>
+                    
+                    <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#doctor" class="mobile-nav-link">Doctor</a></li>
+
+                    <!-- Mobile Gallery Dropdown -->
+                    <li class="mobile-nav-item mobile-dropdown">
+                        <div class="mobile-dropdown-toggle">
+                            <span class="mobile-nav-link">Gallery</span>
+                            <button class="mobile-dropdown-arrow" aria-label="Toggle gallery dropdown"></button>
+                        </div>
+                        <ul class="mobile-dropdown-menu">
+                         
+                             <li><a href="photo.html" class="mobile-dropdown-link">Photo Gallery</a></li>
+                              <li><a href="video.html" class="mobile-dropdown-link">Video Gallery</a></li>
+                           
+                        </ul>
+                    </li>
+
+                    <li class="mobile-nav-item"><a href="testimonial.html" class="mobile-nav-link">Testimonial</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#location" class="mobile-nav-link">Location</a></li>
+                </ul>
+                <div class="mobile-contact-info">
+                    <p class="clinic-tagline">Where Health Meets Happiness</p>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section class="video-gallery" style="padding: 40px 15px; background-color: #f9f9f9; font-family: 'Segoe UI', Arial, sans-serif;">
+    <div class="gallery-container" style="max-width: 1200px; margin: 0 auto;">
+        
+        <div style="text-align: center; margin-bottom: 35px;">
+            <h1 style="color: #333; font-size: 2rem; margin-bottom: 10px;">Patient <span style="color: #346e42;">Video Testimonials</span></h1>
+             <p class="gallery-subtitle" style="color: #666; max-width: 700px; margin: 0 auto; line-height: 1.6; font-size: 1.1rem;">
+                Watch real patients share their experiences with H Square Dental treatments. See their transformation stories and hear about their journey to better dental health.
+            </p>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 25px; justify-content: center;">
+            
+            <div style="flex: 1 1 320px; max-width: 400px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                
+                <div style="width: 100%; background: #000; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <video controls playsinline preload="metadata" poster="" 
+                           style="width: 100%; height: 100%; display: block; object-fit: cover;">
+                        <source src="WhatsApp Video 2026-01-29 at 1.46.41 PM.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div style="padding: 20px;">
+                    <div style="font-weight: bold; color: #333; font-size: 1.1rem; margin-bottom: 4px;"></div>
+                    <div style="color: #346e42; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Dental Implants</div>
+                    <p style="font-size: 0.95rem; color: #555; line-height: 1.5; margin-bottom: 18px;">"After years of discomfort with dentures, I got dental implants at H Square Dental. The results are amazing!"</p>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #aaa; border-top: 1px solid #f2f2f2; padding-top: 12px;">
+                        <span><i class="far fa-calendar-alt"></i> 2 months ago</span>
+                        <span><i class="far fa-smile"></i> 98% helpful</span>
+                    </div>
+                </div>
+            </div>
+            
+            
+             <div style="flex: 1 1 320px; max-width: 400px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                
+                <div style="width: 100%; background: #000; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <video controls playsinline preload="metadata" poster="" 
+                           style="width: 100%; height: 100%; display: block; object-fit: cover;">
+                        <source src="mucocele.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div style="padding: 20px;">
+                    <div style="font-weight: bold; color: #333; font-size: 1.1rem; margin-bottom: 4px;"></div>
+                    <div style="color: #346e42; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Mucosele Excision</div>
+                    <p style="font-size: 0.95rem; color: #555; line-height: 1.5; margin-bottom: 18px;">"Small Surgery,Big Relief-Restoring Comfort and Confidence"</p>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #aaa; border-top: 1px solid #f2f2f2; padding-top: 12px;">
+                        <span><i class="far fa-calendar-alt"></i> 2 months ago</span>
+                        <span><i class="far fa-smile"></i> 98% helpful</span>
+                    </div>
+                </div>
+            </div>
+           
+            
+            
+            
+            <div style="flex: 1 1 320px; max-width: 400px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                
+                <div style="width: 100%; background: #000; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <video controls playsinline preload="metadata" poster="" 
+                           style="width: 100%; height: 100%; display: block; object-fit: cover;">
+                        <source src="WhatsApp Video 2026-01-29 at 1.46.42 PM.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div style="padding: 20px;">
+                    <div style="font-weight: bold; color: #333; font-size: 1.1rem; margin-bottom: 4px;"> </div>
+                    <div style="color: #346e42; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Crowns & Bridges</div>
+                    <p style="font-size: 0.95rem; color: #555; line-height: 1.5; margin-bottom: 18px;">"At H Square Dental, we provide dental crowns to protect damaged teeth and bridges to replace missing teeth, restoring your smile's function and appearance."</p>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #aaa; border-top: 1px solid #f2f2f2; padding-top: 12px;">
+                        <span><i class="far fa-calendar-alt"></i> 2 months ago</span>
+                        <span><i class="far fa-smile"></i> 98% helpful</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="flex: 1 1 320px; max-width: 400px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                
+                <div style="width: 100%; background: #000; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <video controls playsinline preload="metadata" poster="" 
+                           style="width: 100%; height: 100%; display: block; object-fit: cover;">
+                        <source src="WhatsApp Video 2026-01-29 at 1.46.45 PM.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div style="padding: 20px;">
+                    <div style="font-weight: bold; color: #333; font-size: 1.1rem; margin-bottom: 4px;">Patient Reviews</div>
+                    <div style="color: #346e42; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Reviews</div>
+                    <p style="font-size: 0.95rem; color: #555; line-height: 1.5; margin-bottom: 18px;">"At H Square Dental, you can watch patient videos sharing their positive experiences and successful smile transformations from our treatments."</p>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #aaa; border-top: 1px solid #f2f2f2; padding-top: 12px;">
+                        <span><i class="far fa-calendar-alt"></i> 2 months ago</span>
+                        <span><i class="far fa-smile"></i> 98% helpful</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="flex: 1 1 320px; max-width: 400px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                <div style="width: 100%; background: #000; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <video controls playsinline preload="metadata" 
+                           style="width: 100%; height: 100%; display: block; object-fit: cover;">
+                        <source src="WhatsApp Video 2026-01-29 at 1.46.46 PM (1).mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div style="padding: 20px;">
+                    <div style="font-weight: bold; color: #333; font-size: 1.1rem; margin-bottom: 4px;"></div>
+                    <div style="color: #346e42; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Dental Implant</div>
+                    <p style="font-size: 0.95rem; color: #555; line-height: 1.5; margin-bottom: 18px;">"At H Square Dental, we successfully restore smiles with dental implants even when teeth are completely missing, creating secure and natural-looking replacements."</p>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #aaa; border-top: 1px solid #f2f2f2; padding-top: 12px;">
+                        <span><i class="far fa-calendar-alt"></i> 1 month ago</span>
+                        <span><i class="far fa-smile"></i> 96% helpful</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- STATS SECTION -->
+<section class="stats-section">
+    <div class="stats-container">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h2 style="font-size: 2rem; color: #333; margin-bottom: 0.5rem;">Why Patients <span style="color: #2A5934;">Trust Us</span></h2>
+            <p style="color: #666; font-size: 1.1rem;">Real numbers from real patients who transformed their smiles at H Square Dental</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-smile"></i>
+                </div>
+                <div class="stat-number" data-count="100">0%</div>
+                <div class="stat-text">Patient Satisfaction Rate</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number" data-count="10000">0+</div>
+               
+                <div class="stat-text" >Happy Patients Served</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="stat-number" data-count="250">0+</div>
+                <div class="stat-text">Video Testimonials</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <!--<div class="stat-number" data-count="10">10</div>-->
+                  <div style="font-size: 38px;" >10+</div>
+                <div class="stat-text">Years of Experience</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="gallery-cta">
+    <div class="cta-content">
+        <h2>Ready to Transform Your Smile?</h2>
+        <p>Join our happy patients and experience world-class dental care. Book your consultation today and take the first step towards your dream smile.</p>
+        
+        <div class="cta-buttons">
+            
+            <a href="index.html#contact" class="cta-btn appointment-cta">
+                <i class="fas fa-calendar-alt"></i>
+                Book Your Appointment
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal">
+    <div class="modal-content">
+        <div class="modal-video" id="modalVideoPlayer">
+            <!-- Video will be loaded here -->
+        </div>
+        <div class="modal-close" id="modalClose">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Floating WhatsApp Button -->
+<div class="whatsapp-float" onclick="openWhatsApp()">
+  <div class="whatsapp-icon">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 3.026.872 5.847 2.376 8.238L.512 31.488l7.25-1.864C10.153 31.128 12.974 32 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0z"/>
+      <path d="M24.538 22.625c-0.35 0.987-1.725 1.812-2.812 2.062-0.875 0.2-2.025 0.35-6.288-1.213-5.413-1.963-8.862-6.787-9.125-7.1-0.262-0.313-2.1-2.8-2.1-5.338 0-2.537 1.312-3.775 1.837-4.313 0.525-0.537 1.137-0.687 1.525-0.687 0.387 0 0.7 0.025 1 0.05 0.3 0.025 0.688-0.125 1.075 0.8 0.387 0.925 1.325 3.2 1.437 3.438 0.112 0.237 0.187 0.512-0.062 0.837-0.25 0.325-0.437 0.512-0.862 0.812-0.425 0.3-0.837 0.662-1.187 1.062-0.35 0.4-0.275 0.75 0.062 1.212 0.338 0.463 1.5 2.013 3.225 3.263 2.175 1.575 3.938 2.062 4.575 2.288 0.638 0.225 1.013 0.188 1.388-0.113 0.375-0.3 1.6-1.5 2.038-2.012 0.438-0.512 0.875-0.438 1.463-0.25 0.588 0.188 3.7 1.75 4.338 2.062 0.637 0.313 1.062 0.475 1.213 0.738 0.15 0.263 0.15 1.513-0.338 2.488z" fill="white"/>
+    </svg>
+  </div>
+  <div class="whatsapp-text">
+    Chat on WhatsApp
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script src="loading.js"></script>
+<script>
+    // Fixed Mobile Menu Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu elements
+        const mobileToggle = document.getElementById('mobileMenuToggle');
+        const mobileOverlay = document.getElementById('mobileNavOverlay');
+        const mobileClose = document.getElementById('mobileMenuClose');
+        
+        console.log('Mobile Menu Elements:', {
+            toggle: mobileToggle,
+            overlay: mobileOverlay,
+            close: mobileClose
+        });
+        
+        // Toggle mobile menu
+        if (mobileToggle && mobileOverlay) {
+            mobileToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('Mobile menu button clicked');
+                mobileOverlay.classList.add('active');
+                mobileToggle.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        } else {
+            console.error('Mobile menu elements not found!');
+        }
+        
+        // Close mobile menu
+        if (mobileClose && mobileOverlay) {
+            mobileClose.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('Mobile menu close clicked');
+                mobileOverlay.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+        
+        // Close menu when clicking outside
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', function(e) {
+                if (e.target === mobileOverlay) {
+                    console.log('Clicked outside menu');
+                    mobileOverlay.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+        
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
+                mobileOverlay.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Mobile dropdown functionality
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownMenu = this.nextElementSibling;
+                const arrow = this.querySelector('.mobile-dropdown-arrow');
+                
+                // Toggle current dropdown
+                if (dropdownMenu.classList.contains('active')) {
+                    dropdownMenu.classList.remove('active');
+                    if (arrow) arrow.textContent = '+';
+                    dropdownMenu.style.maxHeight = '0';
+                } else {
+                    // Close other dropdowns
+                    document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+                        if (menu !== dropdownMenu) {
+                            menu.classList.remove('active');
+                            menu.style.maxHeight = '0';
+                            const otherArrow = menu.previousElementSibling?.querySelector('.mobile-dropdown-arrow');
+                            if (otherArrow) otherArrow.textContent = '+';
+                        }
+                    });
+                    
+                    // Open current dropdown
+                    dropdownMenu.classList.add('active');
+                    if (arrow) arrow.textContent = '−';
+                    dropdownMenu.style.maxHeight = dropdownMenu.scrollHeight + 'px';
+                }
+            });
+        });
+        
+        // Close dropdowns when clicking menu links
+        document.querySelectorAll('.mobile-nav-link, .mobile-dropdown-link').forEach(link => {
+            link.addEventListener('click', function() {
+                // Close menu after clicking link (for smooth navigation)
+                setTimeout(() => {
+                    if (mobileOverlay.classList.contains('active')) {
+                        mobileOverlay.classList.remove('active');
+                        mobileToggle.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                }, 300);
+            });
+        });
+        
+        // Video Testimonial Gallery Functionality
+        const videoCards = document.querySelectorAll('.video-card');
+        const videoModal = document.getElementById('videoModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalVideoPlayer = document.getElementById('modalVideoPlayer');
+        const watchMoreBtn = document.getElementById('watchMoreBtn');
+        
+        // Play video when clicking play button or video card
+        if (videoCards.length > 0) {
+            videoCards.forEach(card => {
+                const video = card.querySelector('.video-player');
+                const playButton = card.querySelector('.play-button');
+                
+                if (playButton) {
+                    playButton.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (video) openVideoModal(video.src, card.querySelector('.patient-name')?.textContent || 'Patient');
+                    });
+                }
+                
+                // Card click to play video
+                card.addEventListener('click', (e) => {
+                    if (!e.target.closest('.play-button') && video) {
+                        openVideoModal(video.src, card.querySelector('.patient-name')?.textContent || 'Patient');
+                    }
+                });
+            });
+        }
+        
+        // Watch More button
+        if (watchMoreBtn) {
+            watchMoreBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const firstVideo = document.querySelector('.video-player');
+                const firstName = document.querySelector('.patient-name')?.textContent || 'Patient';
+                if (firstVideo) openVideoModal(firstVideo.src, firstName);
+            });
+        }
+        
+        // Open video modal
+        function openVideoModal(videoSrc, patientName) {
+            modalVideoPlayer.innerHTML = `
+                <video controls autoplay style="width:100%;height:100%;">
+                    <source src="${videoSrc}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div style="position:absolute;bottom:20px;left:20px;color:white;background:rgba(0,0,0,0.7);padding:10px;border-radius:5px;">
+                    <strong>${patientName}</strong> - H Square Dental Patient
+                </div>
+            `;
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close video modal
+        if (modalClose) {
+            modalClose.addEventListener('click', () => {
+                videoModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                const video = modalVideoPlayer.querySelector('video');
+                if (video) video.pause();
+            });
+        }
+        
+        // Close video modal when clicking outside
+        if (videoModal) {
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) {
+                    videoModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    const video = modalVideoPlayer.querySelector('video');
+                    if (video) video.pause();
+                }
+            });
+        }
+        
+        // Keyboard support (ESC to close)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                videoModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                const video = modalVideoPlayer.querySelector('video');
+                if (video) video.pause();
+            }
+        });
+        
+        // Animated number counting for stats
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        // Function to animate counting
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                if (element.classList.contains('stat-number')) {
+                    if (target < 100) {
+                        element.textContent = Math.round(current) + '%';
+                    } else {
+                        element.textContent = Math.round(current) + '+';
+                    }
+                }
+            }, 30);
+        }
+        
+        // Check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        // Animate when in viewport
+        function checkAndAnimate() {
+            statNumbers.forEach(stat => {
+                if (isInViewport(stat) && !stat.classList.contains('animated')) {
+                    const target = parseInt(stat.getAttribute('data-count'));
+                    animateCounter(stat, target);
+                    stat.classList.add('animated');
+                }
+            });
+        }
+        
+        // Initial check
+        checkAndAnimate();
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkAndAnimate);
+    });
+    
+    // WhatsApp function
+    function openWhatsApp() {
+        const message = encodeURIComponent("Hi, I saw your gallery on H Square Dental website. Can I see more cases like mine?");
+        const phone = "919042779903";
+        const url = `https://wa.me/${phone}?text=${message}`;
+        window.open(url, '_blank');
+    }
+    
+    // Video error handling
+    document.querySelectorAll('video').forEach(video => {
+        video.addEventListener('error', function(e) {
+            console.log('Video Error:', video.error);
+            console.log('Error Code:', video.error?.code);
+            console.log('Video SRC:', video.src);
+        });
+    });
+</script>
+
+<style>
+    /* WhatsApp Button Styles */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #25D366;
+        color: white;
+        border-radius: 50px;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        z-index: 9997;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+        background: #128C7E;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    .whatsapp-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulse 2s infinite;
+    }
+
+    .whatsapp-icon svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .whatsapp-text {
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    /* Mobile Responsive for WhatsApp */
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            bottom: 15px;
+            right: 15px;
+            padding: 10px 15px;
+        }
+        
+        .whatsapp-icon {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .whatsapp-text {
+            font-size: 13px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .whatsapp-float {
+            bottom: 10px;
+            right: 10px;
+            padding: 8px 12px;
+        }
+        
+        .whatsapp-text {
+            display: none;
+        }
+    }
+</style>
+<style>
+/* Simple hamburger fix */
+@media (max-width: 768px) {
+    /* Show hamburger */
+    .mobile-menu-toggle {
+        display: flex !important;
+        width: 40px;
+        height: 30px;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 5px;
+    }
+    
+    /* Hide desktop menu */
+    .desktop-nav {
+        display: none !important;
+    }
+    
+    /* Hamburger lines */
+    .hamburger-line {
+        width: 100%;
+        height: 3px;
+        background: #2A5934;
+        border-radius: 2px;
+        transition: 0.3s;
+    }
+}
+</style>
+</body>
+</html>

@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - H Square Dental</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="whitefilling.css">
+    <link rel="stylesheet" href="loading.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* GALLERY SPECIFIC STYLES */
+        
+        /* Hero Section for Gallery */
+        .gallery-hero {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7f2 100%);
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 50%, rgba(42, 89, 52, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .gallery-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .gallery-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(42, 89, 52, 0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: #2A5934;
+            animation: scaleIn 0.6s ease-out 0.3s both;
+        }
+
+        .gallery-badge i {
+            font-size: 1.2rem;
+            color: #2A5934;
+        }
+
+        .gallery-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: #111;
+            margin-bottom: 1rem;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .gallery-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInUp 0.8s ease-out 0.3s both;
+        }
+
+        /* Gallery Navigation */
+        .gallery-nav {
+            background: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            animation: slideInDown 0.6s ease-out 0.4s both;
+        }
+
+        .gallery-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .gallery-category {
+            padding: 0.8rem 1.5rem;
+            background: #f8faf9;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            color: #666;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-category:hover {
+            transform: translateY(-2px);
+            background: #e8f5e9;
+            color: #2A5934;
+        }
+
+        .gallery-category.active {
+            background: #2A5934;
+            color: white;
+            border-color: #2A5934;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 89, 52, 0.3);
+        }
+
+        /* Gallery Grid */
+        .gallery-section {
+            padding: 4rem 0;
+            background: #f8faf9;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+        .gallery-item:nth-child(7) { animation-delay: 0.7s; }
+        .gallery-item:nth-child(8) { animation-delay: 0.8s; }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(42, 89, 52, 0.15);
+        }
+
+        .gallery-image-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-view-btn {
+            background: rgba(255, 255, 255, 0.95);
+            color: #2A5934;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .gallery-view-btn:hover {
+            background: white;
+            transform: translateY(15px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-content {
+            padding: 1.5rem;
+        }
+
+        .gallery-category-tag {
+            display: inline-block;
+            background: rgba(42, 89, 52, 0.1);
+            color: #2A5934;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .gallery-item-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-item-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Stats Section */
+        .gallery-stats {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f8faf9;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: #e8f5e9;
+            box-shadow: 0 10px 30px rgba(42, 89, 52, 0.1);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: #2A5934;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Trust Banner */
+        .trust-banner {
+            background: linear-gradient(135deg, #2A5934 0%, #3a7a4a 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .trust-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .trust-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .trust-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .trust-badge i {
+            font-size: 2rem;
+        }
+
+        /* Gallery Load More */
+        .gallery-load-more {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .load-more-btn {
+            background: #2A5934;
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            background: #3a7a4a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(42, 89, 52, 0.3);
+        }
+
+        /* ANIMATIONS */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-hero {
+                padding: 4rem 0 3rem;
+            }
+            
+            .gallery-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-nav {
+                top: 70px;
+            }
+            
+            .gallery-categories {
+                gap: 0.5rem;
+            }
+            
+            .gallery-category {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .trust-content h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-hero {
+                padding: 3rem 0 2rem;
+            }
+            
+            .gallery-title {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .gallery-category {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: scaleIn 0.4s ease;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: white;
+            color: #333;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-nav-btn {
+            background: white;
+            color: #333;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+     
+   <div class="dental-loader" id="pageLoader">
+    <div class="tooth-brush">
+        <div class="brush-head"></div>
+        <div class="brush-handle"></div>
+    </div>
+    <div class="tooth"></div>
+    <p>Loading Gallery...</p>
+</div> 
+
+<header class="site-header" id="siteHeader">
+    <div class="header-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <a href="/" class="logo-link" aria-label="H Square Dental - Home">
+                <img 
+                    src="WhatsApp Image 2026-01-12 at 11.36.23 AM (1).jpeg" 
+                    alt="H Square Dental Logo" 
+                    class="logo-image"
+                >
+            </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main navigation">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                
+               <li class="nav-item dropdown">
+    <a href="viewalltreatments.html" class="nav-link dropdown-toggle">
+        Treatments
+        <span class="dropdown-arrow">▼</span>
+    </a>
+    <ul class="dropdown-menu" style="
+        display: flex;
+        flex-wrap: wrap;
+        width: 400px; /* Adjust width as needed */
+        padding: 10px 0;
+    ">
+        <li style="width: 50%; padding: 5px 15px;"><a href="denture.html" class="dropdown-link">Denture</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="whitefilling.html" class="dropdown-link">White Filling</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="rootcanal1.html" class="dropdown-link">Root Canal</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="scaling.html" class="dropdown-link">Scaling</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery1.html" class="dropdown-link">Porcelain Veneer</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery2.html" class="dropdown-link">Clear Aligners</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery3.html" class="dropdown-link">Dental Implants</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="gallery4.html" class="dropdown-link">Teeth Whitening</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Crowns.html" class="dropdown-link">Crowns</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Extraction.html" class="dropdown-link">Tooth Extraction</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="pediatric.html" class="dropdown-link">Pediatric Dentistry</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Digital.html" class="dropdown-link">Digital Dentistry</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Maxillo.html" class="dropdown-link">Maxillo facial Prosthesis</a></li>
+        <li style="width: 50%; padding: 5px 15px;"><a href="Cosmetic.html" class="dropdown-link">Cosmetic Dentistry</a></li>
+       
+
+        <li style="width: 100%; padding: 5px 15px; border-top: 1px solid #eee; margin-top: 5px; padding-top: 10px;">
+            <!-- <a href="viewalltreatments.html" class="dropdown-link">View All Treatments</a> -->
+        </li>
+    </ul>
+</li> 
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html#doctor" class="nav-link">Doctor</a></li>
+                
+                <!-- Gallery Dropdown -->
+                <li class="nav-item dropdown">
+                    <a href="#gallery" class="nav-link dropdown-toggle">
+                        Gallery
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                       
+                        <li><a href="photo.html" class="dropdown-link">Photo Gallery</a></li>
+                        <li><a href="video.html" class="dropdown-link">Video Testimonials</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item"><a href="testimonial.html" class="nav-link">Testimonial</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+                <li class="nav-item"><a href="index.html#location" class="nav-link">Location</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" id="mobileNavOverlay">
+            <!-- NEW: Left Side Close Button -->
+           
+            
+            <nav class="mobile-nav" aria-label="Mobile navigation">
+                <div class="mobile-nav-header">
+                    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu"></button>
+                    <a href="/" class="mobile-logo-link" aria-label="H Square Dental - Home">
+                        <img 
+                            src="" 
+                            alt="" 
+                            class="mobile-logo-image"
+                        >
+                    </a>
+                </div>
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+                    
+                  <!-- Mobile Treatments Dropdown -->
+<li class="mobile-nav-item mobile-dropdown">
+    <div class="mobile-dropdown-toggle">
+        <span class="mobile-nav-link">Treatments</span>
+        <button class="mobile-dropdown-arrow" aria-label="Toggle treatments dropdown">+</button>
+    </div>
+    <ul class="mobile-dropdown-menu" style="
+        display: none !important;
+        max-height: 500px !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 10px 0 !important;
+        margin-left: 20px !important;
+        background: #f8f9fa !important;
+        border-left: 2px solid #2A5934 !important;
+    ">
+        <li style="padding: 8px 20px !important;"><a href="denture.html" class="mobile-dropdown-link">Denture</a></li>
+        <li style="padding: 8px 20px !important;"><a href="whitefilling.html" class="mobile-dropdown-link">White Filling</a></li>
+        <li style="padding: 8px 20px !important;"><a href="rootcanal1.html" class="mobile-dropdown-link">Root Canal</a></li>
+        <li style="padding: 8px 20px !important;"><a href="scaling.html" class="mobile-dropdown-link">Scaling</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery1.html" class="mobile-dropdown-link">Porcelain Veneer</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery2.html" class="mobile-dropdown-link">Clear Aligners</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery3.html" class="mobile-dropdown-link">Dental Implants</a></li>
+        <li style="padding: 8px 20px !important;"><a href="gallery4.html" class="mobile-dropdown-link">Teeth Whitening</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Crowns.html" class="mobile-dropdown-link">Crowns & Bridges</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Cosmetic.html" class="mobile-dropdown-link">Cosmetic Dentistry</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Extraction.html" class="mobile-dropdown-link">Tooth Extraction</a></li>
+        <li style="padding: 8px 20px !important;"><a href="pediatric.html" class="mobile-dropdown-link">Pediatric Dentistry</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Maxillo.html" class="mobile-dropdown-link">Maxillofacial Prosthesis</a></li>
+        <li style="padding: 8px 20px !important;"><a href="Digital.html" class="mobile-dropdown-link">Digital Dentistry</a></li>
+    </ul>
+</li>
+
+<script>
+// Add this script after your existing scripts
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile dropdown toggle functionality
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        // Remove any existing event listeners first
+        const newToggle = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(newToggle, toggle);
+        
+        // Add new event listener
+        newToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const dropdownMenu = this.nextElementSibling;
+            const arrow = this.querySelector('.mobile-dropdown-arrow');
+            
+            // Toggle display
+            if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+                dropdownMenu.style.display = 'block';
+                if (arrow) arrow.textContent = '−'; // Minus sign when open
+                this.parentElement.classList.add('active');
+            } else {
+                dropdownMenu.style.display = 'none';
+                if (arrow) arrow.textContent = '+'; // Plus sign when closed
+                this.parentElement.classList.remove('active');
+            }
+        });
+    });
+    
+    // Initialize all dropdowns as closed
+    document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+        menu.style.display = 'none';
+    });
+    
+    // Initialize all arrows
+    document.querySelectorAll('.mobile-dropdown-arrow').forEach(arrow => {
+        arrow.textContent = '+';
+    });
+});
+
+// Also update your existing JavaScript to prevent conflicts
+const toggle = document.getElementById('mobileMenuToggle');
+const overlay = document.getElementById('mobileNavOverlay');
+
+if (toggle) {
+    toggle.addEventListener('click', () => {
+        overlay.classList.toggle('active');
+        // Close all dropdowns when opening/closing mobile menu
+        document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+            menu.style.display = 'none';
+        });
+        document.querySelectorAll('.mobile-dropdown-arrow').forEach(arrow => {
+            arrow.textContent = '+';
+        });
+    });
+}
+</script>
+                    </li>
+                    
+                    <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#doctor" class="mobile-nav-link">Doctor</a></li>
+
+                    <!-- Mobile Gallery Dropdown -->
+                    <li class="mobile-nav-item mobile-dropdown">
+                        <div class="mobile-dropdown-toggle">
+                            <span class="mobile-nav-link">Gallery</span>
+                            <button class="mobile-dropdown-arrow" aria-label="Toggle gallery dropdown"></button>
+                        </div>
+                        <ul class="mobile-dropdown-menu">
+                         
+                             <li><a href="photo.html" class="mobile-dropdown-link">Photo Gallery</a></li>
+                              <li><a href="video.html" class="mobile-dropdown-link">Video Gallery</a></li>
+                           
+                        </ul>
+                    </li>
+
+                    <li class="mobile-nav-item"><a href="testimonial.html" class="mobile-nav-link">Testimonial</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#location" class="mobile-nav-link">Location</a></li>
+                </ul>
+                <div class="mobile-contact-info">
+                    <p class="clinic-tagline">Where Health Meets Happiness</p>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+<!-- Gallery Hero Section -->
+<section class="gallery-hero" style="margin-top: -2rem; padding-top: 2rem; padding-bottom: 2.5rem;">
+    <div class="gallery-hero-content">
+       
+        <h1 class="gallery-title">Our Gallery<span class="highlight"></span> </h1>
+        <p class="gallery-subtitle">Real Patients. Real Results. Real Transformations at H Square Dental.</p>
+        <div class="hero-actions">
+            <a href="index.html#contact" class="btn-primary">
+                <i class="fas fa-calendar-check"></i> Book Your Consultation
+            </a>
+            <a href="tel:+919042779903" class="btn-secondary">
+                <i class="fas fa-phone-alt"></i> Call: +91 90427 79903
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Filter Section -->
+<section class="gallery-filter-section">
+    <div class="container">
+        <div class="gallery-filter-container">
+            <div class="filter-title">
+                <i class="fas fa-filter"></i>
+                <span>Filter by Treatment Type</span>
+            </div>
+            <div class="filter-dropdown">
+                <button class="filter-toggle" id="galleryFilterToggle">
+                    <span class="selected-option">
+                        <i class="fas fa-th-large"></i> All Cases
+                    </span>
+                    <span class="dropdown-icon">▼</span>
+                </button>
+                <div class="filter-options" id="galleryFilterOptions">
+                    <div class="filter-option active" data-filter="all">
+                        <i class="fas fa-th-large"></i>
+                        <span>All Cases</span>
+                    </div>
+                    <div class="filter-option" data-filter="smile-makeover">
+                        <i class="fas fa-smile"></i>
+                        <span>Smile Makeovers</span>
+                    </div>
+                    <div class="filter-option" data-filter="implants">
+                        <i class="fas fa-tooth"></i>
+                        <span>Dental Implants</span>
+                    </div>
+                    <div class="filter-option" data-filter="orthodontics">
+                        <i class="fas fa-teeth"></i>
+                        <span>Orthodontics</span>
+                    </div>
+                    <div class="filter-option" data-filter="cosmetic">
+                        <i class="fas fa-star"></i>
+                        <span>Cosmetic Dentistry</span>
+                    </div>
+                    <div class="filter-option" data-filter="restorative">
+                        <i class="fas fa-teeth-open"></i>
+                        <span>Restorative</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Gallery Filter Section */
+.gallery-filter-section {
+    background: #f8faf9;
+    padding: 30px 0;
+    border-bottom: 1px solid #e8f5e9;
+    position: relative;
+    z-index: 50;
+}
+
+.gallery-filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(42, 89, 52, 0.1);
+}
+
+.filter-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2A5934;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.filter-title i {
+    font-size: 18px;
+}
+
+/* Filter Dropdown */
+.filter-dropdown {
+    position: relative;
+    min-width: 200px;
+}
+
+.filter-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 15px;
+    background: #f8faf9;
+    border: 1px solid #2A5934;
+    border-radius: 8px;
+    color: #2A5934;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-toggle:hover {
+    background: #e8f5e9;
+}
+
+.selected-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdown-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.filter-dropdown.active .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Filter Options - Desktop */
+.filter-options {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #e8f5e9;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    display: block !important;
+}
+
+.filter-dropdown.active .filter-options {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #555;
+    font-size: 14px;
+}
+
+.filter-option:hover {
+    background: #f0f7f2;
+    color: #2A5934;
+    padding-left: 20px;
+}
+
+.filter-option.active {
+    background: #2A5934;
+    color: white;
+}
+
+.filter-option i {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Scrollbar */
+.filter-options::-webkit-scrollbar {
+    width: 6px;
+}
+
+.filter-options::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.filter-options::-webkit-scrollbar-thumb {
+    background: #c8e6c9;
+    border-radius: 10px;
+}
+
+.filter-options::-webkit-scrollbar-thumb:hover {
+    background: #2A5934;
+}
+
+/* ========== MOBILE RESPONSIVE FIX ========== */
+@media (max-width: 768px) {
+    .gallery-filter-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 15px;
+        margin: 0 10px;
+        width: calc(100% - 20px);
+    }
+    
+    .filter-dropdown {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    /* MOBILE DROPDOWN FIX - Full screen modal */
+    .filter-options {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) translateY(-20px) !important;
+        width: 90vw !important;
+        max-width: 400px !important;
+        max-height: 70vh !important;
+        border-radius: 12px !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+        padding: 15px 0 !important;
+        z-index: 9999 !important;
+    }
+    
+    .filter-dropdown.active .filter-options {
+        transform: translate(-50%, -50%) translateY(0) !important;
+    }
+    
+    /* Mobile backdrop overlay */
+    .filter-dropdown.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+        display: block;
+    }
+    
+    .filter-option {
+        padding: 14px 20px !important;
+        font-size: 15px !important;
+    }
+    
+    .filter-option i {
+        font-size: 18px !important;
+        width: 25px !important;
+    }
+}
+
+/* Small Mobile (iPhone SE etc.) */
+@media (max-width: 375px) {
+    .filter-options {
+        width: 95vw !important;
+        max-height: 80vh !important;
+    }
+    
+    .filter-option {
+        padding: 16px 20px !important;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .gallery-filter-container {
+        max-width: 95%;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterToggle = document.getElementById('galleryFilterToggle');
+    const filterOptions = document.getElementById('galleryFilterOptions');
+    const filterDropdown = document.querySelector('.filter-dropdown');
+    const allFilterOptions = document.querySelectorAll('.filter-option');
+    
+    // Check if mobile
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+    
+    // Initialize dropdown
+    filterOptions.style.display = 'block';
+    filterOptions.style.opacity = '0';
+    filterOptions.style.visibility = 'hidden';
+    filterOptions.style.transform = 'translateY(-10px)';
+    
+    // Toggle dropdown
+    filterToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (filterDropdown.classList.contains('active')) {
+            // Close dropdown
+            closeDropdown();
+        } else {
+            // Open dropdown
+            openDropdown();
+        }
+    });
+    
+    function openDropdown() {
+        if (isMobile()) {
+            // Mobile - Center modal
+            filterOptions.style.position = 'fixed';
+            filterOptions.style.top = '50%';
+            filterOptions.style.left = '50%';
+            filterOptions.style.transform = 'translate(-50%, -50%) translateY(-20px)';
+            filterOptions.style.width = '90vw';
+            filterOptions.style.maxWidth = '400px';
+            filterOptions.style.maxHeight = '70vh';
+        } else {
+            // Desktop - Normal position
+            filterOptions.style.position = 'absolute';
+            filterOptions.style.top = 'calc(100% + 5px)';
+            filterOptions.style.left = '0';
+            filterOptions.style.transform = 'translateY(-10px)';
+            filterOptions.style.width = '';
+            filterOptions.style.maxWidth = '';
+        }
+        
+        filterOptions.style.opacity = '1';
+        filterOptions.style.visibility = 'visible';
+        filterOptions.style.transform = isMobile() ? 
+            'translate(-50%, -50%) translateY(0)' : 'translateY(0)';
+        filterDropdown.classList.add('active');
+        
+        // Prevent body scroll on mobile
+        if (isMobile()) {
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    
+    function closeDropdown() {
+        filterOptions.style.opacity = '0';
+        filterOptions.style.visibility = 'hidden';
+        
+        if (isMobile()) {
+            filterOptions.style.transform = 'translate(-50%, -50%) translateY(-20px)';
+        } else {
+            filterOptions.style.transform = 'translateY(-10px)';
+        }
+        
+        filterDropdown.classList.remove('active');
+        
+        // Restore body scroll on mobile
+        if (isMobile()) {
+            document.body.style.overflow = '';
+        }
+    }
+    
+    // Handle option selection
+    allFilterOptions.forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            const filter = this.getAttribute('data-filter');
+            const icon = this.querySelector('i').cloneNode(true);
+            const text = this.querySelector('span').textContent;
+            
+            // Update active state
+            allFilterOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update toggle button text
+            const selectedOption = filterToggle.querySelector('.selected-option');
+            selectedOption.innerHTML = '';
+            selectedOption.appendChild(icon);
+            selectedOption.appendChild(document.createTextNode(' ' + text));
+            
+            // Close dropdown
+            closeDropdown();
+            
+            // Filter gallery items
+            filterGalleryItems(filter);
+        });
+    });
+    
+    // Filter gallery function
+    function filterGalleryItems(filter) {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        if (galleryItems.length > 0) {
+            galleryItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                
+                if (filter === 'all' || category === filter) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+    }
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!filterDropdown.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+    
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeDropdown();
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (!filterDropdown.classList.contains('active')) return;
+        
+        // Recalculate position on resize
+        if (isMobile()) {
+            filterOptions.style.position = 'fixed';
+            filterOptions.style.top = '50%';
+            filterOptions.style.left = '50%';
+            filterOptions.style.transform = 'translate(-50%, -50%)';
+            filterOptions.style.width = '90vw';
+            filterOptions.style.maxWidth = '400px';
+        } else {
+            filterOptions.style.position = 'absolute';
+            filterOptions.style.top = 'calc(100% + 5px)';
+            filterOptions.style.left = '0';
+            filterOptions.style.transform = 'translateY(0)';
+            filterOptions.style.width = '';
+            filterOptions.style.maxWidth = '';
+        }
+    });
+});
+</script>
+
+<!-- Gallery Section -->
+ <style>
+    /* Tag-ah disturb pannama title-ah mattum align panna idhu best way */
+    .gallery-content {
+        padding: 10px 15px;
+        text-align: center; /* Ellathaiyum center pannum */
+    }
+
+    /* Category tag-la changes illa, just block-ah mathuna dhaan center aagum */
+    .gallery-category-tag {
+        display: block; 
+        /* Neenga use panra adhe 11px and 600 weight maintain aagum */
+    }
+
+    /* Title content size-ah mattum reduce panniruken */
+    .gallery-item-title {
+        margin: 4px 0 0;
+        font-size: 14px; /* 17px-la irundhu 14px-ku reduce panniruken */
+        line-height: 1.2;
+        font-weight: 700;
+        display: block;
+    }
+    
+    /* Image container already correct-ah iruku */
+    .gallery-image-container {
+        height: 250px;
+        width: 100%;
+        background-color: #f8f8f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+</style>
+<section class="gallery-section">
+    <div class="gallery-container">
+        <div class="gallery-grid" id="galleryGrid">
+           <div class="gallery-item" data-category="smile-makeover">
+    <div class="gallery-image-container" style="height: 250px; width: 100%; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <img src="Image2.png" alt="Complete Smile Makeover Transformation" class="gallery-image" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+    </div>
+    <div class="gallery-content" style="padding: 10px 15px;">
+        <span class="gallery-category-tag" style="font-size: 11px; font-weight: 600;">Smile Makeover</span>
+        <h3 class="gallery-item-title" style="margin: 4px 0 0; font-size: 17px; line-height: 1.2;">Complete Smile Transformation</h3>
+    </div>
+</div>
+
+<div class="gallery-item" data-category="implants">
+    <div class="gallery-image-container" style="height: 250px; width: 100%; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <img src="Image1.png" alt="Single Dental Implant Case" class="gallery-image" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+    </div>
+    <div class="gallery-content" style="padding: 10px 15px;">
+        <span class="gallery-category-tag" style="font-size: 11px; font-weight: 600;">Rehab</span>
+        <h3 class="gallery-item-title" style="margin: 4px 0 0; font-size: 17px; line-height: 1.2;">Full Mouth Rehabilitation</h3>
+    </div>
+</div>
+
+<div class="gallery-item" data-category="orthodontics">
+    <div class="gallery-image-container" style="height: 250px; width: 100%; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <img src="Image3.png" alt="Clear Aligner Treatment" class="gallery-image" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+    </div>
+    <div class="gallery-content" style="padding: 10px 15px;">
+        <span class="gallery-category-tag" style="font-size: 11px; font-weight: 600;">Orthodontics</span>
+        <h3 class="gallery-item-title" style="margin: 4px 0 0; font-size: 17px; line-height: 1.2;">Restoring Smiles(basic material)</h3>
+    </div>
+</div>
+
+<div class="gallery-item" data-category="restorative">
+    <div class="gallery-image-container" style="height: 250px; width: 100%; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <img src="Image7.png" alt="Crown and Bridge Work" class="gallery-image" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+    </div>
+    <div class="gallery-content" style="padding: 10px 15px;">
+        <span class="gallery-category-tag" style="font-size: 11px; font-weight: 600;">Restorative Dentistry</span>
+        <h3 class="gallery-item-title" style="margin: 4px 0 0; font-size: 17px; line-height: 1.2;">Implant Prosthesis</h3>
+    </div>
+</div>
+
+<div class="gallery-item" data-category="implants">
+    <div class="gallery-image-container" style="height: 250px; width: 100%; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <img src="Image4.png" alt="Full Mouth Implants" class="gallery-image" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+    </div>
+    <div class="gallery-content" style="padding: 10px 15px;">
+        <span class="gallery-category-tag" style="font-size: 11px; font-weight: 600;">Rehab</span>
+        <h3 class="gallery-item-title" style="margin: 4px 0 0; font-size: 17px; line-height: 1.2;">Full Mouth Rehab</h3>
+    </div>
+</div>
+
+<div class="gallery-item" data-category="implants">
+    <div class="gallery-image-container" style="height: 250px; width: 100%; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <img src="Image6.png" alt="Crowns & Bridges" class="gallery-image" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+    </div>
+    <div class="gallery-content" style="padding: 10px 15px;">
+        <span class="gallery-category-tag" style="font-size: 11px; font-weight: 600;">Crowns & Bridges</span>
+        <h3 class="gallery-item-title" style="margin: 4px 0 0; font-size: 17px; line-height: 1.2;">Crowns & Bridges</h3>
+    </div>
+</div>
+
+<div class="gallery-item" data-category="smile-makeover">
+    <div class="gallery-image-container" style="height: 250px; width: 100%; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <img src="Image8.png" alt="Before and After Smile" class="gallery-image" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+    </div>
+    <div class="gallery-content" style="padding: 10px 15px;">
+        <span class="gallery-category-tag" style="font-size: 11px; font-weight: 600;">Smile Makeover</span>
+        <h3 class="gallery-item-title" style="margin: 4px 0 0; font-size: 17px; line-height: 1.2;">Dramatic Smile Enhancement</h3>
+    </div>
+</div>
+
+<div class="gallery-item" data-category="orthodontics">
+    <div class="gallery-image-container" style="height: 250px; width: 100%; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <img src="Image5.png" alt="Teeth Alignment Results" class="gallery-image" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+    </div>
+    <div class="gallery-content" style="padding: 10px 15px;">
+        <span class="gallery-category-tag" style="font-size: 11px; font-weight: 600;">Orthodontics</span>
+        <h3 class="gallery-item-title" style="margin: 4px 0 0; font-size: 17px; line-height: 1.2;">Ortho Correction</h3>
+    </div>
+</div>            
+        </div>
+
+        
+        <!-- <div class="gallery-load-more">
+            <button class="load-more-btn" id="loadMoreBtn">
+                <i class="fas fa-plus-circle"></i> Load More Cases
+            </button>
+        </div> -->
+    </div>
+</section>
+<!-- Stats Section -->
+<section class="gallery-stats" style="margin-top: -2rem; padding-top: 2rem; padding-bottom: 2.5rem;">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Gallery<span class="highlight"></span> in Numbers</h2>
+            <p>Quantifying our commitment to dental excellence</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-smile-beam"></i>
+                </div>
+                <div class="stat-number">5000+</div>
+                <div class="stat-text">Happy Patients Transformed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="stat-number">1000+</div>
+                <div class="stat-text">Successful Cases Documented</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="stat-number">100%</div>
+                <div class="stat-text">Patient Satisfaction Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-number">10</div>
+                <div class="stat-text">Years of Experience</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Stats Section */
+.gallery-stats {
+    padding: 4rem 0;
+    background: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: #f8faf9;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(42, 89, 52, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    background: #e8f5e9;
+    box-shadow: 0 15px 35px rgba(42, 89, 52, 0.15);
+    border-color: #2A5934;
+}
+
+.stat-icon {
+    font-size: 2.8rem;
+    color: #2A5934;
+    margin-bottom: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+    transform: scale(1.1);
+    color: #2A5934;
+}
+
+.stat-number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.stat-text {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    max-width: 180px;
+    margin: 0 auto;
+}
+
+/* Tablet (2x2 grid) */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 1.8rem 1.2rem;
+    }
+    
+    .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .stat-text {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile (2x2 grid) */
+@media (max-width: 768px) {
+    .gallery-stats {
+        padding: 3rem 0;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 1.5rem 1rem;
+        border-radius: 15px;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .stat-icon {
+        font-size: 2.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .stat-number {
+        font-size: 2.2rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .stat-text {
+        font-size: 0.9rem;
+        max-width: 140px;
+    }
+}
+
+/* Small Mobile (Stacked) */
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+    }
+    
+    .stat-icon {
+        font-size: 2.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .stat-text {
+        font-size: 1rem;
+        max-width: 200px;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+    .stats-grid {
+        gap: 3rem;
+    }
+    
+    .stat-card {
+        padding: 2.5rem 2rem;
+    }
+    
+    .stat-icon {
+        font-size: 3.2rem;
+    }
+    
+    .stat-number {
+        font-size: 3.2rem;
+    }
+    
+    .stat-text {
+        font-size: 1.2rem;
+        max-width: 200px;
+    }
+}
+/* --- UPDATED MOBILE GRID CSS --- */
+
+/* Tablet & Mobile (Standard) */
+@media (max-width: 768px) {
+    .gallery-stats {
+        padding: 2.5rem 10px; /* Reduced vertical space */
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+        gap: 0.8rem; /* Tight spacing between cards */
+        margin-top: 1rem;
+    }
+
+    .stat-card {
+        padding: 1rem 0.5rem; /* Small internal padding */
+        border-radius: 12px;
+        min-height: 130px; /* Short card height */
+    }
+
+    .stat-icon {
+        font-size: 1.5rem; /* Much smaller icons */
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-number {
+        font-size: 1.4rem; /* Smaller, clear numbers */
+        margin-bottom: 2px;
+    }
+
+    .stat-text {
+        font-size: 0.75rem; /* Very small labels */
+        line-height: 1.2;
+        max-width: 100%;
+    }
+}
+
+/* Extra Small Mobile (Below 375px) */
+@media (max-width: 375px) {
+    .stats-grid {
+        gap: 0.5rem; /* Even tighter for tiny screens */
+    }
+    
+    .stat-card {
+        padding: 0.8rem 0.3rem;
+        min-height: 110px;
+    }
+
+    .stat-number {
+        font-size: 1.2rem;
+    }
+
+    .stat-text {
+        font-size: 0.7rem;
+    }
+}
+</style>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready for Your Transformation?</h2>
+            <p>See yourself in our next success story. Schedule your consultation and start your journey to a perfect smile.</p>
+            
+            <div class="cta-buttons">
+                <a href="tel:+919042779903" class="cta-btn phone-btn">
+                    <i class="fas fa-phone-alt"></i>
+                    Call: +91 90427 79903
+                </a>
+                <a href="index.html#contact" class="cta-btn appointment-btn">
+                    <i class="fas fa-calendar-alt"></i>
+                    Book Free Consultation
+                </a>
+            </div>
+            
+            <div class="cta-features">
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Free Digital Smile Preview</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Custom Treatment Plans</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Flexible Payment Options</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-content">
+        <img id="lightboxImage" class="lightbox-image" alt="Enlarged View">
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-nav">
+            <button class="lightbox-nav-btn" id="lightboxPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-nav-btn" id="lightboxNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<body style="overflow: visible !important; min-height: 100vh !important; position: relative !important; display: block !important; visibility: visible !important; opacity: 1 !important;"></body>
+<script src="script.js"></script>
+<script src="loading.js"></script>
+
+<script>
+    // Gallery Filtering
+    document.addEventListener('DOMContentLoaded', function() {
+        const categories = document.querySelectorAll('.gallery-category');
+        const items = document.querySelectorAll('.gallery-item');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const galleryGrid = document.getElementById('galleryGrid');
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const viewButtons = document.querySelectorAll('.gallery-view-btn');
+        
+        let currentImageIndex = 0;
+        const images = [
+            'https://images.unsplash.com/photo-1580828343064-fde4fc206bc4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1631547102299-444dda26f38a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1608500218965-6e8e1a4d0ef3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1560253025-4e19e04d6b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+        ];
+        
+        // Filter Gallery Items
+        categories.forEach(category => {
+            category.addEventListener('click', () => {
+                const filter = category.getAttribute('data-filter');
+                
+                // Update active category
+                categories.forEach(cat => cat.classList.remove('active'));
+                category.classList.add('active');
+                
+                // Filter items
+                items.forEach(item => {
+                    const categoryType = item.getAttribute('data-category');
+                    
+                    if (filter === 'all' || categoryType === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Load More Functionality
+        let loadedItems = 8;
+        const totalItems = 16; // Simulating more items available
+        
+        loadMoreBtn.addEventListener('click', () => {
+            // Simulate loading more items
+            for (let i = loadedItems; i < loadedItems + 4 && i < totalItems; i++) {
+                const newItem = document.createElement('div');
+                newItem.className = 'gallery-item';
+                newItem.setAttribute('data-category', i % 2 === 0 ? 'smile-makeover' : 'cosmetic');
+                newItem.style.opacity = '0';
+                newItem.style.transform = 'translateY(30px)';
+                newItem.style.animation = 'none';
+                
+                newItem.innerHTML = `
+                    <div class="gallery-image-container">
+                        <img src="https://images.unsplash.com/photo-${158000000 + i}?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Additional Case ${i + 1}" 
+                             class="gallery-image">
+                        <div class="gallery-overlay">
+                            <button class="gallery-view-btn" data-image="${i + 1}">
+                                <i class="fas fa-search-plus"></i> View Full Size
+                            </button>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-category-tag">${i % 2 === 0 ? 'Smile Makeover' : 'Cosmetic Dentistry'}</span>
+                        <h3 class="gallery-item-title">Case Study ${i + 1}</h3>
+                        <p class="gallery-item-description">Additional successful case from our clinic.</p>
+                    </div>
+                `;
+                
+                galleryGrid.appendChild(newItem);
+                
+                // Animate in
+                setTimeout(() => {
+                    newItem.style.opacity = '1';
+                    newItem.style.transform = 'translateY(0)';
+                }, (i - loadedItems) * 100);
+            }
+            
+            loadedItems += 4;
+            
+            // Update view buttons for new items
+            updateViewButtons();
+            
+            // Hide button if all items loaded
+            if (loadedItems >= totalItems) {
+                loadMoreBtn.style.display = 'none';
+            }
+        });
+        
+        // Lightbox Functionality
+        function openLightbox(index) {
+            currentImageIndex = index;
+            lightboxImage.src = images[index];
+            lightboxModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            lightboxModal.style.display = 'none';
+            document.body.style.overflow = 'visible';
+        }
+        
+        function navigateLightbox(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+            if (currentImageIndex >= images.length) currentImageIndex = 0;
+            lightboxImage.src = images[currentImageIndex];
+        }
+        
+        function updateViewButtons() {
+            document.querySelectorAll('.gallery-view-btn').forEach((btn, index) => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const imageIndex = parseInt(btn.getAttribute('data-image')) - 1;
+                    openLightbox(imageIndex);
+                });
+            });
+        }
+        
+        // Initial setup
+        updateViewButtons();
+        
+        // Lightbox event listeners
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+        lightboxNext.addEventListener('click', () => navigateLightbox(1));
+        
+        // Close lightbox on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+        
+        // Close lightbox when clicking outside
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) closeLightbox();
+        });
+    });
+    
+    // Mobile menu functionality
+    const toggle = document.getElementById('mobileMenuToggle');
+    const overlay = document.getElementById('mobileNavOverlay');
+
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            overlay.classList.toggle('active');
+        });
+    }
+
+    // Mobile dropdown functionality
+    document.querySelectorAll('.mobile-dropdown-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.parentElement.classList.toggle('active');
+        });
+    });
+</script>
+
+<!-- Floating WhatsApp Button -->
+<div class="whatsapp-float" onclick="openWhatsApp()">
+  <div class="whatsapp-icon">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 3.026.872 5.847 2.376 8.238L.512 31.488l7.25-1.864C10.153 31.128 12.974 32 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0z"/>
+      <path d="M24.538 22.625c-0.35 0.987-1.725 1.812-2.812 2.062-0.875 0.2-2.025 0.35-6.288-1.213-5.413-1.963-8.862-6.787-9.125-7.1-0.262-0.313-2.1-2.8-2.1-5.338 0-2.537 1.312-3.775 1.837-4.313 0.525-0.537 1.137-0.687 1.525-0.687 0.387 0 0.7 0.025 1 0.05 0.3 0.025 0.688-0.125 1.075 0.8 0.387 0.925 1.325 3.2 1.437 3.438 0.112 0.237 0.187 0.512-0.062 0.837-0.25 0.325-0.437 0.512-0.862 0.812-0.425 0.3-0.837 0.662-1.187 1.062-0.35 0.4-0.275 0.75 0.062 1.212 0.338 0.463 1.5 2.013 3.225 3.263 2.175 1.575 3.938 2.062 4.575 2.288 0.638 0.225 1.013 0.188 1.388-0.113 0.375-0.3 1.6-1.5 2.038-2.012 0.438-0.512 0.875-0.438 1.463-0.25 0.588 0.188 3.7 1.75 4.338 2.062 0.637 0.313 1.062 0.475 1.213 0.738 0.15 0.263 0.15 1.513-0.338 2.488z" fill="white"/>
+    </svg>
+  </div>
+  <div class="whatsapp-text">
+    Chat on WhatsApp
+  </div>
+</div>
+
+<script>
+function openWhatsApp() {
+  const message = encodeURIComponent("Hi, I saw your gallery on H Square Dental website. Can I see more cases like mine?");
+  const phone = "919042779903";
+  const url = `https://wa.me/${phone}?text=${message}`;
+  window.open(url, '_blank');
+}
+</script>
+
+<style>
+/* Floating WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  border-radius: 50px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  z-index: 9999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  background: #128C7E;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.whatsapp-text {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 15px;
+  }
+  
+  .whatsapp-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .whatsapp-text {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    bottom: 10px;
+    right: 10px;
+    padding: 8px 12px;
+  }
+  
+  .whatsapp-text {
+    display: none;
+  }
+}
+</style>
+
+</body>
+</html>
